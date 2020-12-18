@@ -1,6 +1,6 @@
-# Next.JS Boilerplate
+# Won Games Client
 
-This is a [Next.js](https://nextjs.org/) boilerplate bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the Won-Games Client, a games store from the [React Avançado Course](https://www.reactavancado.com.br) and built with a [Next.js](https://nextjs.org/) boilerplate bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
 ## This project uses:
@@ -32,6 +32,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - build: creates the production build version
 - start: starts a simple server with the build production code
 - lint: runs the linter in all components and pages
+- test: runs all your tests
 
 ## Learn More
 
