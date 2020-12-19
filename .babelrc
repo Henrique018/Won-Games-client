@@ -8,16 +8,17 @@
 				"displayName": true
 			}
 		]
-	],
-	"env": {
-		"test": {
-			"plugin":[
-				["babel-plugin-styled-components", {
-					"ssr":false,
-					"displayName":false
-				}]
-			]
+	]//,
+	// "env": {
+	// 	"test": {
+	// 		"plugin":[
+	// 			["babel-plugin-styled-components",
+	// 			{
+	// 				"ssr":false,
+	// 				"displayName":false
+	// 			}]
+	// 		]
 
-		}
-	}
+	// 	}
+	// }
 }
