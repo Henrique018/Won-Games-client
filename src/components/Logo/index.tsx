@@ -9,10 +9,10 @@ export type LogoProps = {
 const Logo = ({
 	color = 'white',
 	size = 'normal',
-	collapseOnMobile,
+	collapseOnMobile = false,
 }: LogoProps) => {
 	return (
-		<S.Wrapper color={color} size={size} collapseOnMobile>
+		<S.Wrapper color={color} size={size} collapseOnMobile={collapseOnMobile}>
 			<svg
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
