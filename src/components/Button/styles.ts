@@ -34,7 +34,6 @@ const wrapperModifier = {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
 		svg {
 			width: 1.5rem;
 
@@ -51,9 +50,13 @@ export const Wrapper = styled.button<WrapperProps>`
 		cursor: pointer;
 		border: 0;
 		border-radius: ${theme.border.radius};
-		padding: ${theme.spacings.xxsmall}
-		font-weight: ${theme.font.bold};
-		background: linear-gradient(180deg, #FF5F5F -14.51%, #F062C0 102.86%, #F23131 102.86%);
+		padding: ${theme.spacings.xxsmall};
+		background: linear-gradient(
+			180deg,
+			#ff5f5f -14.51%,
+			#f062c0 102.86%,
+			#f23131 102.86%
+		);
 
 		${!!size && wrapperModifier[size](theme)}
 		${!!fullWidth && wrapperModifier.fullWidth()}
