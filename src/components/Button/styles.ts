@@ -58,6 +58,16 @@ export const Wrapper = styled.button<WrapperProps>`
 			#f23131 102.86%
 		);
 
+		&:hover {
+			background: linear-gradient(180deg, #e35565 0%, #d958a6 100%),
+				linear-gradient(
+					180deg,
+					#ff5f5f -14.51%,
+					#f062c0 102.86%,
+					#f23131 102.86%
+				);
+		}
+
 		${!!size && wrapperModifier[size](theme)}
 		${!!fullWidth && wrapperModifier.fullWidth()}
 		${hasIcon && wrapperModifier.withIcon(theme)}
