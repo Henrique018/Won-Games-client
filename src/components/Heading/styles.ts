@@ -8,7 +8,7 @@ const wrapperModifiers = {
 		font-size: ${theme.font.sizes.medium};
 		&::after {
 			width: 2.5rem;
-			bottom: 0;
+			bottom: -0.3rem;
 		}
 	`,
 	medium: (theme: DefaultTheme) => css`
