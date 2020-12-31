@@ -1,5 +1,5 @@
-import styled, { css, DefaultTheme } from 'styled-components';
 import { darken } from 'polished';
+import styled, { css, DefaultTheme } from 'styled-components';
 
 import { colorProps, RibbonProps } from '.';
 

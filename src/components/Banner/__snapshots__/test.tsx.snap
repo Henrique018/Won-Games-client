@@ -67,6 +67,16 @@ exports[`<Banner /> should render the banner correctly 1`] = `
   background: linear-gradient(180deg,#e35565 0%,#d958a6 100%),linear-gradient( 180deg,#ff5f5f -14.51%,#f062c0 102.86%,#f23131 102.86% );
 }
 
+@media (max-width:1170px) {
+  .c0 .styles__Wrapper-sc-1g557fl-0 {
+    right: 0;
+  }
+
+  .c0 .styles__Wrapper-sc-1g557fl-0::before {
+    display: none;
+  }
+}
+
 @media (min-width:768px) {
   .c0 {
     box-shadow: 0 0.4rem 0.5rem 0 rgba(0,0,0,0.2);
