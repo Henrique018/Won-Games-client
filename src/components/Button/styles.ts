@@ -9,21 +9,21 @@ type WrapperProps = { hasIcon: boolean } & Pick<
 const wrapperModifier = {
 	large: (theme: DefaultTheme) => css`
 		height: 5rem;
-		width: 15rem;
+
 		font-size: ${theme.font.sizes.medium};
 		padding: ${theme.spacings.xxsmall} ${theme.spacings.large};
 	`,
 
 	medium: (theme: DefaultTheme) => css`
 		height: 4rem;
-		width: 12.2rem;
+
 		font-size: ${theme.font.sizes.small};
 		padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
 	`,
 
 	small: (theme: DefaultTheme) => css`
 		height: 3rem;
-		width: 9.5rem;
+
 		font-size: ${theme.font.sizes.xsmall};
 	`,
 

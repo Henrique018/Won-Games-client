@@ -58,7 +58,6 @@ exports[`<Banner /> should render the banner correctly 1`] = `
   text-decoration: none;
   background: linear-gradient( 180deg,#ff5f5f -14.51%,#f062c0 102.86%,#f23131 102.86% );
   height: 5rem;
-  width: 15rem;
   font-size: 1.6rem;
   padding: 0.8rem 4.0rem;
 }

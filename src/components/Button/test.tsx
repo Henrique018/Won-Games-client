@@ -9,7 +9,6 @@ describe('<Button />', () => {
 		const { container } = renderWithTheme(<Button>Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
-			width: '12.2rem',
 			height: '4rem',
 			padding: '0.8rem 3.2rem',
 			'font-size': '1.4rem',
@@ -22,7 +21,6 @@ describe('<Button />', () => {
 		renderWithTheme(<Button size="small">Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
-			width: '9.5rem',
 			height: '3rem',
 			'font-size': '1.2rem',
 		});
@@ -32,7 +30,6 @@ describe('<Button />', () => {
 		renderWithTheme(<Button size="large">Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
-			width: '15rem',
 			height: '5rem',
 			padding: '0.8rem 4.0rem',
 			'font-size': '1.6rem',
