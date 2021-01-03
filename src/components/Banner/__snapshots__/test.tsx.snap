@@ -111,7 +111,7 @@ exports[`<Banner /> should render the banner correctly 1`] = `
   }
 }
 
-<main
+<section
   class="c0"
 >
   <div
@@ -149,5 +149,5 @@ exports[`<Banner /> should render the banner correctly 1`] = `
       </span>
     </a>
   </div>
-</main>
+</section>
 `;

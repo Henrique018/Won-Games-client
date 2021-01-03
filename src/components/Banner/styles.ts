@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import * as RibbonStyles from 'components/Ribbon/styles';
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.section`
 	position: relative;
 
 	${media.lessThan('large')`
