@@ -11,6 +11,9 @@ export default {
 		img: '/img/population-zero.png',
 		price: 'R$ 235,00',
 	},
+	argTypes: {
+		onFav: { action: 'clicked' },
+	},
 } as Meta;
 
 export const Basic: Story<GameCardProps> = (args) => (
@@ -19,8 +22,14 @@ export const Basic: Story<GameCardProps> = (args) => (
 	</div>
 );
 
-export const withDiscount: Story<GameCardProps> = (args) => (
+export const WithRibbon: Story<GameCardProps> = (args) => (
 	<div style={{ width: '30rem' }}>
 		<GameCard promotionalPrice="R$ 199.90" {...args} />
 	</div>
 );
+
+WithRibbon.args = {
+	ribbonText: '20% OFF',
+	ribbonSize: 'small',
+	ribbonColor: 'primary',
+};
