@@ -5,17 +5,26 @@ import {
 
 import * as S from './styles';
 import Button from 'components/Button';
+import Ribbon from 'components/Ribbon';
 
 export type GameCardProps = {
 	img: string;
 	title: string;
 	developer: string;
 	price: string;
+	promotionalPrice?: string;
 };
 
-const GameCard = ({ img, title, developer, price }: GameCardProps) => {
+const GameCard = ({
+	img,
+	title,
+	developer,
+	price,
+	promotionalPrice,
+}: GameCardProps) => {
 	return (
 		<S.Wrapper>
+			{!!promotionalPrice && <Ribbon size="small">10% de desconto</Ribbon>}
 			<S.ImageBox>
 				<img src={img} alt={title} />
 			</S.ImageBox>
@@ -30,7 +39,8 @@ const GameCard = ({ img, title, developer, price }: GameCardProps) => {
 				</S.FavButton>
 
 				<S.BuyBox>
-					<S.Price>{price}</S.Price>
+					{!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
+					<S.Price>{promotionalPrice || price}</S.Price>
 					<Button icon={<AddShoppingCart />} size="small" />
 				</S.BuyBox>
 			</S.Content>

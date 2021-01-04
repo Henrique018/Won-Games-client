@@ -33,7 +33,7 @@ const wrapperModifier = {
 		right: -1.5rem;
 
 		&::before {
-			top: 2.6rem;
+			top: 2.4rem;
 			border-top-width: 0.7rem;
 			border-right-width: 1.5rem;
 		}

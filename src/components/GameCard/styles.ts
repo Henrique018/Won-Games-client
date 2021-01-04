@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
 export const Wrapper = styled.article`
 	${({ theme }) => css`
@@ -19,8 +19,8 @@ export const ImageBox = styled.div`
 		to right,
 		#f6f7f8 0%,
 		#edeef1 20%,
-		#f6f7f8 40%,
-		#f6f7f8 100%
+		#e6e6e6 40%,
+		#e6e6e6 100%
 	);
 	background-size: 80rem 14rem;
 	animation: placeholderShimmer 1s linear infinite forwards;
@@ -87,17 +87,34 @@ export const BuyBox = styled.div`
 		margin-top: ${theme.spacings.xxsmall};
 	`}
 `;
-export const Price = styled.div`
-	${({ theme }) => css`
+
+type PriceProps = {
+	isPromotional?: boolean;
+};
+
+const priceModifier = {
+	promotional: (theme: DefaultTheme) => css`
+		text-decoration: line-through;
+		color: ${theme.colors.gray};
+		margin-right: ${theme.spacings.xxsmall};
+	`,
+	default: (theme: DefaultTheme) => css`
 		color: ${theme.colors.white};
 		padding: 0 ${theme.spacings.xxsmall};
 		background-color: ${theme.colors.secondary};
 		border-radius: ${theme.border.radius};
 		margin-right: calc(${theme.spacings.xxsmall} / 2);
+	`,
+};
 
-		display: inline-flex;
-		font-weight: ${theme.font.bold};
+export const Price = styled.div<PriceProps>`
+	${({ theme, isPromotional }) => css`
 		height: 3rem;
+		font-weight: ${theme.font.bold};
+		display: inline-flex;
 		align-items: center;
+
+		${!isPromotional && priceModifier.default(theme)}
+		${isPromotional && priceModifier.promotional(theme)}
 	`}
 `;

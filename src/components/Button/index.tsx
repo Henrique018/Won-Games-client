@@ -22,7 +22,7 @@ const Button = ({
 	return (
 		<S.Wrapper size={size} fullWidth={fullWidth} hasIcon={!!icon} {...props}>
 			{!!icon && icon}
-			<span>{children}</span>
+			{!!children && <span>{children}</span>}
 		</S.Wrapper>
 	);
 };

@@ -29,4 +29,28 @@ describe('<GameCard />', () => {
 
 		expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
 	});
+
+	it('should render the price correctly', () => {
+		renderWithTheme(<GameCard {...props} />);
+
+		expect(screen.getByText(props.price)).toHaveStyle({
+			background: '#3CD3C1',
+		});
+
+		expect(screen.getByText(props.price)).not.toHaveStyle({
+			textDecoration: 'line-through',
+		});
+	});
+
+	it('should render a line-through the old price', () => {
+		renderWithTheme(<GameCard promotionalPrice="R$ 199,90" {...props} />);
+
+		expect(screen.getByText(props.price)).toHaveStyle({
+			textDecoration: 'line-through',
+		});
+
+		expect(screen.getByText('R$ 199,90')).not.toHaveStyle({
+			textDecoration: 'line-through',
+		});
+	});
 });

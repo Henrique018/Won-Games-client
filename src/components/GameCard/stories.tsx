@@ -19,8 +19,8 @@ export const Basic: Story<GameCardProps> = (args) => (
 	</div>
 );
 
-Basic.parameters = {
-	backgrounds: {
-		default: 'dark',
-	},
-};
+export const withDiscount: Story<GameCardProps> = (args) => (
+	<div style={{ width: '30rem' }}>
+		<GameCard promotionalPrice="R$ 199.90" {...args} />
+	</div>
+);
