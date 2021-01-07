@@ -37,7 +37,7 @@ const Home = ({
 	return (
 		<section>
 			<Container>
-				<Menu username="Henrique" />
+				<Menu />
 				<S.SectionBanner>
 					<BannerSlider items={banners} />
 				</S.SectionBanner>
