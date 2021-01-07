@@ -19,13 +19,13 @@ describe('<Container />', () => {
 		  padding-right: calc(3.2rem / 2);
 		}
 
-		<section
+		<div
 		  class="c0"
 		>
 		  <span>
 		    Won Games
 		  </span>
-		</section>
+		</div>
 	`);
 	});
 });
