@@ -1,10 +1,4 @@
-import 'match-media-mock';
-import { screen } from '@testing-library/react';
-
-import GameCardSlider from '.';
-import { renderWithTheme } from 'utils/test/helper';
-
-const items = [
+export default [
 	{
 		title: 'Population Zero',
 		developer: 'Rockstar Games',
@@ -48,21 +42,3 @@ const items = [
 		promotionalPrice: 'R$ 215,00',
 	},
 ];
-
-describe('<GameCardSlider />', () => {
-	it('should render with white arrows by default', () => {
-		renderWithTheme(<GameCardSlider cardItems={items} />);
-
-		expect(screen.getByLabelText(/previous games/i)).toHaveStyle({
-			color: '#fafafa',
-		});
-	});
-
-	it('should render with black arrows if color is passed', () => {
-		renderWithTheme(<GameCardSlider cardItems={items} color="black" />);
-
-		expect(screen.getByLabelText(/next games/i)).toHaveStyle({
-			color: '#030517',
-		});
-	});
-});

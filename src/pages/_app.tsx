@@ -9,13 +9,10 @@ function App({ Component, pageProps }: AppProps) {
 	return (
 		<ThemeProvider theme={theme}>
 			<Head>
-				<title> React Avançado - Boilerplate</title>
+				<title>Won Games</title>
 				<link rel="shortcut icon" href="/img/icon-512.png" />
 				<link rel="apple-touch-icon" href="/img/icon-512.png" />
-				<meta
-					name="description"
-					content="A boilerplate to start to work with ReactJs, Next.JS, TypeScript and Styled Components"
-				/>
+				<meta name="description" content="Won Games store" />
 				<link rel="manifest" href="/public/manifest.json" />
 			</Head>
 			<GlobalStyles />

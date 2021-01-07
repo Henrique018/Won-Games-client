@@ -1,28 +1,22 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Highlight, { HighlightProps } from '.';
+import props from './mock';
 
 export default {
 	title: 'Highlight',
 	component: Highlight,
-	args: {
-		backgroundImage: '/img/Background.png',
-		title: "Red Dead it's back",
-		subtitle: "Come see John's adventures",
-		buttonLabel: 'Buy now',
-		buttonLink: '/rdr2/',
-	},
 } as Meta;
 
-export const Basic: Story<HighlightProps> = (args) => (
+export const Basic: Story<HighlightProps> = () => (
 	<div style={{ maxWidth: '104rem' }}>
-		<Highlight {...args} />
+		<Highlight {...props} />
 	</div>
 );
 
-export const withFloatImage: Story<HighlightProps> = (args) => (
+export const withFloatImage: Story<HighlightProps> = () => (
 	<div style={{ maxWidth: '104rem' }}>
-		<Highlight {...args} />
+		<Highlight {...props} floatImage="/img/red-dead.png" />
 	</div>
 );
 
