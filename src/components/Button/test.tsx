@@ -55,6 +55,20 @@ describe('<Button />', () => {
 		expect(screen.getByTestId('icon')).toBeInTheDocument();
 	});
 
+	it('should render a minimal version', () => {
+		renderWithTheme(
+			<Button icon={<AddShoppingCart data-testid="icon" />} minimal>
+				Add to wishlist
+			</Button>
+		);
+
+		expect(
+			screen.getByRole('button', { name: /add to wishlist/i })
+		).toHaveStyle({
+			background: 'none',
+		});
+	});
+
 	it('should render the button as a link', () => {
 		renderWithTheme(
 			<Button as="a" href="/link">

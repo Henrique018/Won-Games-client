@@ -13,6 +13,7 @@ export default {
 
 export const Default: Story = (args) => <Button {...args} />;
 export const WithIcon: Story = (args) => <Button {...args} />;
+export const Minimalist: Story = (args) => <Button {...args} />;
 export const Link: Story = (args) => <Button {...args} />;
 
 Default.args = {
@@ -22,6 +23,12 @@ Default.args = {
 WithIcon.args = {
 	children: 'Buy now',
 	icon: <AddShoppingCart />,
+};
+
+Minimalist.args = {
+	children: 'Add to wishlist',
+	icon: <AddShoppingCart />,
+	minimal: true,
 };
 
 Link.args = {
