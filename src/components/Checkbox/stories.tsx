@@ -10,7 +10,32 @@ export default {
 	component: Checkbox,
 } as Meta;
 
-export const Basic: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
+export const Basic: Story<CheckboxProps> = (args) => (
+	<>
+		<div style={{ padding: 10 }}>
+			<Checkbox
+				isChecked
+				{...args}
+				name="category"
+				label="Action"
+				labelFor="action"
+			/>
+		</div>
+
+		<div style={{ padding: 10 }}>
+			<Checkbox {...args} name="category" label="RPG" labelFor="rpg" />
+		</div>
+
+		<div style={{ padding: 10 }}>
+			<Checkbox
+				{...args}
+				name="category"
+				label="Adventure"
+				labelFor="adventure"
+			/>
+		</div>
+	</>
+);
 
 Basic.parameters = {
 	backgrounds: { default: 'won-dark' },

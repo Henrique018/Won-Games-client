@@ -70,4 +70,14 @@ describe('<Checkbox />', () => {
 		});
 		expect(onCheck).toBeCalledWith(false);
 	});
+
+	it('should have keyboard accessibility', () => {
+		renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />);
+
+		expect(window.document.body).toHaveFocus();
+
+		userEvent.tab();
+
+		expect(screen.getByRole('checkbox')).toHaveFocus();
+	});
 });
