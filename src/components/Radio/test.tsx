@@ -41,4 +41,14 @@ describe('<Radio />', () => {
 		await waitFor(() => expect(onCheck).toBeCalledTimes(1));
 		expect(onCheck).toHaveBeenCalledWith('anyValue');
 	});
+
+	it('should have keyboard accessibility', () => {
+		renderWithTheme(<Radio name="category" label="radio label" />);
+
+		expect(window.document.body).toHaveFocus();
+
+		userEvent.tab();
+
+		expect(screen.getByRole('radio')).toHaveFocus();
+	});
 });

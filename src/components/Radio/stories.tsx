@@ -24,9 +24,9 @@ export const Basic: Story<RadioProps> = (args) => (
 				labelFor="primeiro"
 				id="primeiro"
 				value="primeiro"
+				defaultChecked
 				{...args}
 			/>
-			;
 		</div>
 
 		<div style={{ padding: 10 }}>
@@ -38,7 +38,6 @@ export const Basic: Story<RadioProps> = (args) => (
 				value="segundo"
 				{...args}
 			/>
-			;
 		</div>
 
 		<div style={{ padding: 10 }}>
@@ -50,7 +49,6 @@ export const Basic: Story<RadioProps> = (args) => (
 				value="terceiro"
 				{...args}
 			/>
-			;
 		</div>
 	</>
 );
