@@ -57,7 +57,7 @@ describe('<Button />', () => {
 
 	it('should render a minimal version', () => {
 		renderWithTheme(
-			<Button icon={<AddShoppingCart data-testid="icon" />} minimal>
+			<Button icon={<AddShoppingCart />} minimal>
 				Add to wishlist
 			</Button>
 		);
