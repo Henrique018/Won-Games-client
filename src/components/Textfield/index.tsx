@@ -9,6 +9,7 @@ export type TextFieldProps = {
 	icon?: React.ReactNode;
 	iconPosition?: 'left' | 'right';
 	disabled?: boolean;
+	error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const Textfield = ({
@@ -19,6 +20,7 @@ const Textfield = ({
 	icon,
 	iconPosition = 'left',
 	disabled = false,
+	error,
 	...props
 }: TextFieldProps) => {
 	const [value, setValue] = useState(initialValue);
@@ -27,15 +29,12 @@ const Textfield = ({
 		const newValue = e.currentTarget.value;
 		setValue(newValue);
 
-		!!onInput && onInput(newValue);
+		onInput && onInput(newValue);
 	};
+
 	return (
-		<S.Wrapper>
-			{!!label && (
-				<S.Label htmlFor={labelFor} disabled={disabled}>
-					{label}
-				</S.Label>
-			)}
+		<S.Wrapper error={!!error} disabled={disabled}>
+			{!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
 			<S.InputWrapper iconPosition={iconPosition}>
 				<S.Icon>{!!icon && icon}</S.Icon>
 				<S.InputAlignment>
@@ -50,6 +49,7 @@ const Textfield = ({
 					/>
 				</S.InputAlignment>
 			</S.InputWrapper>
+			{!!error && <S.ErrorMessage>{error}</S.ErrorMessage>}
 		</S.Wrapper>
 	);
 };

@@ -98,10 +98,18 @@ describe('<Textfield />', () => {
 	it('should render a disabled input', () => {
 		renderWithTheme(<Textfield label="textfield label" disabled />);
 
-		expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
+		expect(screen.getByRole('textbox')).toBeDisabled();
 		expect(screen.getByText(/textfield label/i)).toHaveStyle({
 			cursor: 'not-allowed',
 			color: '#b5b5b5',
 		});
+	});
+
+	it('should render with an error', () => {
+		renderWithTheme(
+			<Textfield label="textfield label" error="Something went wrong" />
+		);
+
+		expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
 	});
 });

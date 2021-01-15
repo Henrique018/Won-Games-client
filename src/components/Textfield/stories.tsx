@@ -30,3 +30,9 @@ export const withIcon: Story = (args) => (
 		<Textfield icon={<Email />} {...args} />
 	</div>
 );
+
+export const withError: Story = (args) => (
+	<div style={{ padding: 10, maxWidth: 300 }}>
+		<Textfield icon={<Email />} error="this field is required" {...args} />
+	</div>
+);

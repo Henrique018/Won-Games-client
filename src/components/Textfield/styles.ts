@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { TextFieldProps } from '.';
 
-export const Wrapper = styled.div``;
-
-type InputWrapperProps = Pick<TextFieldProps, 'iconPosition' | 'disabled'>;
+type InputWrapperProps = Pick<TextFieldProps, 'iconPosition'>;
+type WrapperProps = { error: boolean } & Pick<TextFieldProps, 'disabled'>;
 
 const inputWrapperModifier = {
 	left: () => css`
@@ -30,8 +29,8 @@ export const InputWrapper = styled.div<InputWrapperProps>`
 	`}
 `;
 
-export const Input = styled.input<InputWrapperProps>`
-	${({ theme, disabled }) => css`
+export const Input = styled.input`
+	${({ theme }) => css`
 		color: ${theme.colors.black};
 		font-family: ${theme.font.family};
 		font-size: ${theme.font.sizes.small};
@@ -40,11 +39,6 @@ export const Input = styled.input<InputWrapperProps>`
 		border: 0;
 		outline: none;
 		width: 100%;
-		cursor: ${disabled ? 'not-allowed' : 'pointer'};
-
-		&::placeholder {
-			color: ${disabled ? theme.colors.disabled : theme.colors.black};
-		}
 	`}
 `;
 
@@ -65,10 +59,47 @@ export const Icon = styled.div`
 	`}
 `;
 
-export const Label = styled.label<InputWrapperProps>`
-	${({ theme, disabled }) => css`
+export const Label = styled.label`
+	${({ theme }) => css`
 		font-size: ${theme.font.sizes.small};
-		color: ${disabled ? theme.colors.disabled : theme.colors.black};
-		cursor: ${disabled ? 'not-allowed' : 'pointer'};
 	`}
+`;
+
+const wrapperModifier = {
+	disabled: (theme: DefaultTheme) => css`
+		${Icon},
+		${Input},
+		${Label} {
+			cursor: not-allowed;
+			color: ${theme.colors.disabled};
+			&::placeholder {
+				color: currentColor;
+			}
+		}
+	`,
+
+	error: (theme: DefaultTheme) => css`
+		${Label},
+		${Icon} {
+			color: ${theme.colors.danger};
+		}
+
+		${InputWrapper} {
+			border-color: ${theme.colors.danger};
+		}
+	`,
+};
+
+export const ErrorMessage = styled.span`
+	${({ theme }) => css`
+		color: red;
+		font-size: ${theme.font.sizes.xsmall};
+	`}
+`;
+
+export const Wrapper = styled.form<WrapperProps>`
+	${({ theme, disabled, error }) => css`
+		${!!disabled && wrapperModifier.disabled(theme)}
+		${error && wrapperModifier.error(theme)}
+	`};
 `;

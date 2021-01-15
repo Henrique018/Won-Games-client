@@ -32,6 +32,7 @@ export default {
 		gray: '#8F8F8F',
 		darkGray: '#2E2F42',
 		disabled: '#B5B5B5',
+		danger: '#ff6347',
 	},
 	spacings: {
 		xxsmall: '0.8rem',
