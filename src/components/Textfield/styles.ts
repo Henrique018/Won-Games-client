@@ -97,7 +97,7 @@ export const ErrorMessage = styled.span`
 	`}
 `;
 
-export const Wrapper = styled.form<WrapperProps>`
+export const Wrapper = styled.div<WrapperProps>`
 	${({ theme, disabled, error }) => css`
 		${!!disabled && wrapperModifier.disabled(theme)}
 		${error && wrapperModifier.error(theme)}

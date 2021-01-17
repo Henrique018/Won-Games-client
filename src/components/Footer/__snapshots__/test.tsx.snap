@@ -8,7 +8,6 @@ exports[
   position: relative;
   font-size: 1.6rem;
   font-weight: 600;
-  line-height: 2.8rem;
 }
 
 .c5::after {
