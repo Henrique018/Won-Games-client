@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { darken, lighten } from 'polished';
+import { darken } from 'polished';
 
 import * as ButtonStyles from 'components/Button/styles';
 import * as TextfieldStyles from 'components/Textfield/styles';
@@ -7,26 +7,14 @@ import * as TextfieldStyles from 'components/Textfield/styles';
 export const Wrapper = styled.div`
 	${({ theme }) => css`
 		${TextfieldStyles.Wrapper} {
-			margin: ${theme.spacings.xxsmall} 0;
+			margin: ${theme.spacings.xxsmall} 0 ${theme.spacings.xxsmall};
 		}
+
 		${ButtonStyles.Wrapper} {
-			margin: ${theme.spacings.small} auto ${theme.spacings.xsmall};
+			margin: ${theme.spacings.small} 0 ${theme.spacings.xsmall};
 		}
 
 		font-size: ${theme.font.sizes.small};
-	`};
-`;
-
-export const ForgotPassword = styled.a`
-	${({ theme }) => css`
-		display: block;
-		color: ${theme.colors.black};
-		text-decoration: none;
-		text-align: right;
-
-		&:hover {
-			color: ${lighten(0.2, theme.colors.black)};
-		}
 	`}
 `;
 
