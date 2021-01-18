@@ -4,14 +4,14 @@ import { darken } from 'polished';
 import * as ButtonStyles from 'components/Button/styles';
 import * as TextfieldStyles from 'components/Textfield/styles';
 
-export const Wrapper = styled.div`
+export const FormWrapper = styled.div`
 	${({ theme }) => css`
 		${TextfieldStyles.Wrapper} {
 			margin: ${theme.spacings.xxsmall} 0 ${theme.spacings.xxsmall};
 		}
 
 		${ButtonStyles.Wrapper} {
-			margin: ${theme.spacings.small} 0 ${theme.spacings.xsmall};
+			margin: ${theme.spacings.small} auto ${theme.spacings.xsmall};
 		}
 
 		font-size: ${theme.font.sizes.small};
