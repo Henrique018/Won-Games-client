@@ -49,6 +49,11 @@ export const BannerContent = styled.div`
 		justify-content: space-between;
 		height: 100%;
 	`}
+
+	> a {
+		width: fit-content;
+		height: fit-content;
+	}
 `;
 
 export const Subtitle = styled.h3`
@@ -79,8 +84,7 @@ export const Content = styled.div`
 
 export const ContentWrapper = styled.div`
 	${({ theme }) => css`
-		max-width: 36rem;
-
+		max-width: 38rem;
 		${LogoStyles.Wrapper} {
 			margin: 0 auto ${theme.spacings.xxlarge};
 		}

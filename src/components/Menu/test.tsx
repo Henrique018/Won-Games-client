@@ -38,14 +38,14 @@ describe('<Menu />', () => {
 		renderWithTheme(<Menu />);
 		expect(screen.queryByText(/my account/i)).not.toBeInTheDocument();
 		expect(screen.queryByText(/my wishlist/i)).not.toBeInTheDocument();
-		expect(screen.getByText(/log in now/i)).toBeInTheDocument();
-		expect(screen.getByText(/sign in/i)).toBeInTheDocument();
+		expect(screen.getByText(/sign in now/i)).toBeInTheDocument();
+		expect(screen.getAllByText(/sign up/i)).toHaveLength(2);
 	});
 
 	it('should show the my account and my wishlist when logged in ', () => {
 		renderWithTheme(<Menu username="Henrique" />);
-		expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
-		expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument();
+		expect(screen.queryByText(/sign in now/i)).not.toBeInTheDocument();
+		expect(screen.getAllByText(/sign up/i)).toHaveLength(1);
 		expect(screen.getByText(/my account/i)).toBeInTheDocument();
 		expect(screen.getByText(/my wishlist/i)).toBeInTheDocument();
 	});
