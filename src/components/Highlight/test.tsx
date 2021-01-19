@@ -1,52 +1,47 @@
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/test/helper';
+import highlightMock from 'components/Highlight/mock';
 
 import Highlight from '.';
 import * as S from './styles';
 
-const args = {
-	title: 'heading 1',
-	subtitle: 'heading 2',
-	img: 'https://source.unsplash.com/user/willianjusten/1042x580',
-	buttonLabel: 'buy now',
-	buttonLink: 'rdr2/',
-	backgroundImage: 'img/red-dead-img.png',
-};
-
 describe('<Highlight />', () => {
 	it('should render the highlight', () => {
-		renderWithTheme(<Highlight {...args} />);
+		renderWithTheme(<Highlight {...highlightMock} />);
 
 		expect(
-			screen.getByRole('heading', { name: /heading 1/i })
+			screen.getByRole('heading', { name: highlightMock.title })
 		).toBeInTheDocument();
 		expect(
-			screen.getByRole('heading', { name: /heading 2/i })
+			screen.getByRole('heading', { name: highlightMock.subtitle })
 		).toBeInTheDocument();
 
-		expect(screen.getByRole('link', { name: /buy now/i })).toBeInTheDocument();
+		expect(
+			screen.getByRole('link', { name: highlightMock.buttonLabel })
+		).toBeInTheDocument();
 	});
 
 	it('should render a background image', () => {
-		const { container } = renderWithTheme(<Highlight {...args} />);
+		const { container } = renderWithTheme(<Highlight {...highlightMock} />);
 
 		expect(container.firstChild).toHaveStyle({
-			backgroundImage: `url(${args.backgroundImage})`,
+			backgroundImage: `url(${highlightMock.backgroundImage})`,
 		});
 	});
 
 	it('should render a float image', () => {
-		renderWithTheme(<Highlight floatImage="/img/float-image.png" {...args} />);
-
-		expect(screen.getByRole('img', { name: args.title })).toHaveAttribute(
-			'src',
-			'/img/float-image.png'
+		renderWithTheme(
+			<Highlight floatImage="/img/float-image.png" {...highlightMock} />
 		);
+
+		expect(
+			screen.getByRole('img', { name: highlightMock.title })
+		).toHaveAttribute('src', '/img/float-image.png');
 	});
 
 	it('should render a highlight with a right alignment by default', () => {
 		const { container } = renderWithTheme(
-			<Highlight floatImage="/img/float-image.png" {...args} />
+			<Highlight floatImage="/img/float-image.png" {...highlightMock} />
 		);
 
 		expect(container.firstChild).toHaveStyleRule(
@@ -60,7 +55,11 @@ describe('<Highlight />', () => {
 
 	it('should render a left aligned highlight', () => {
 		const { container } = renderWithTheme(
-			<Highlight floatImage="/img/float-image.png" alignment="left" {...args} />
+			<Highlight
+				floatImage="/img/float-image.png"
+				alignment="left"
+				{...highlightMock}
+			/>
 		);
 
 		expect(container.firstChild).toHaveStyleRule(
