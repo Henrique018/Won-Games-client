@@ -1,59 +1,68 @@
 import 'match-media-mock';
 import { screen } from '@testing-library/react';
 
+import bannerMock from 'components/BannerSlider/mock';
+import gamesMock from 'components/GameCardSlider/mock';
+import highlightMock from 'components/Highlight/mock';
+
 import Home from '.';
 import { renderWithTheme } from 'utils/test/helper';
 
-import highlightMock from 'components/Highlight/mock';
-import bannerMock from 'components/BannerSlider/mock';
-import gamesMock from 'components/GameCardSlider/mock';
-
-const homepageProps = {
-	banners: [bannerMock[0]],
-	newGames: [gamesMock[0]],
+const props = {
+	banners: bannerMock,
+	newGames: gamesMock,
 	mostPopularHighlight: highlightMock,
-	mostPopularGames: [gamesMock[0]],
-	upcomingGames: [gamesMock[0]],
+	mostPopularGames: gamesMock,
+	upcomingGames: gamesMock,
 	upcomingHighlight: highlightMock,
-	moreUpcomingGames: [gamesMock[0]],
+	moreUpcomingGames: gamesMock,
 	freeGamesHighlight: highlightMock,
-	freeGames: [gamesMock[0]],
+	freeGames: gamesMock,
 };
 
+jest.mock('components/Menu', () => {
+	return {
+		__esModule: true,
+		default: function Mock() {
+			return <div data-testid="Menu mock"></div>;
+		},
+	};
+});
+
+jest.mock('components/Footer', () => {
+	return {
+		__esModule: true,
+		default: function Mock() {
+			return <div data-testid="Footer mock"></div>;
+		},
+	};
+});
+
+jest.mock('components/BannerSlider', () => {
+	return {
+		__esModule: true,
+		default: function Mock() {
+			return <div data-testid="Banner mock"></div>;
+		},
+	};
+});
+
+jest.mock('components/Showcase', () => {
+	return {
+		__esModule: true,
+		default: function Mock() {
+			return <div data-testid="Showcase mock"></div>;
+		},
+	};
+});
+
 describe('<Home />', () => {
-	it('should render menu & footer', () => {
-		renderWithTheme(<Home {...homepageProps} />);
+	it('should render the page with all elements', () => {
+		renderWithTheme(<Home {...props} />);
 
-		//menu
-		expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument();
-
-		//footer
-		expect(
-			screen.getByRole('heading', { name: /contact/i })
-		).toBeInTheDocument();
-
-		//logos
-		expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2);
-
-		//sections
-		expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument();
-
-		expect(
-			screen.getByRole('heading', { name: /Most popular/i })
-		).toBeInTheDocument();
-
-		expect(
-			screen.getByRole('heading', { name: /upcoming/i })
-		).toBeInTheDocument();
-
-		expect(
-			screen.getByRole('heading', { name: /free games/i })
-		).toBeInTheDocument();
-
-		//card games
-		expect(screen.getAllByText(/Population zero/i)).toHaveLength(5);
-
-		//highlights
-		expect(screen.getAllByText(/Red Dead it's back/i)).toHaveLength(3);
+		expect(screen.getByTestId('Menu mock')).toBeInTheDocument();
+		expect(screen.getByTestId('Banner mock')).toBeInTheDocument();
+		expect(screen.getAllByTestId('Showcase mock')).toHaveLength(5);
+		expect(screen.getByTestId('Footer mock')).toBeInTheDocument();
 	});
 });
