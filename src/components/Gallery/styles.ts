@@ -51,3 +51,45 @@ export const Wrapper = styled.section`
 		}
 	`}
 `;
+
+export type ModalProps = {
+	isOpen: boolean;
+};
+
+export const Modal = styled.div<ModalProps>`
+	${({ theme, isOpen }) => css`
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		z-index: ${theme.layers.modal};
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 0, 0, 0.7);
+		transition: opacity ${theme.transition.default};
+
+		opacity: ${isOpen ? 1 : 0};
+		pointer-events: ${isOpen ? 'all' : 'none'};
+	`}
+`;
+
+export const Close = styled.div`
+	${({ theme }) => css`
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: right;
+		width: 100%;
+		height: 100%;
+		color: ${theme.colors.white};
+		cursor: pointer;
+	`}
+`;
+
+export const Content = styled.div`
+	max-width: min(100rem, 100%);
+	max-height: 80rem;
+`;
