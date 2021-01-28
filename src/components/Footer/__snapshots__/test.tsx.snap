@@ -37,7 +37,7 @@ exports[
 
 .c2 {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: minmax(auto,50%) 1fr;
   gap: 3.2rem;
   margin-top: 3.2rem;
 }
@@ -50,6 +50,11 @@ exports[
   margin-bottom: 0.8rem;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c3 a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .c3 a:hover {

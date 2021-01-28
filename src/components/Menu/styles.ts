@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 		justify-content: space-between;
 		padding: ${theme.spacings.xsmall} 0;
 		position: relative;
+		z-index: ${theme.layers.menu};
 	`}
 `;
 
