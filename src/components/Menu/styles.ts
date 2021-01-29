@@ -39,7 +39,7 @@ export const IconWrapper = styled.div`
 		height: 2.4rem;
 		cursor: pointer;
 		color: ${theme.colors.white};
-		margin-right: ${theme.spacings.medium};
+		margin-right: ${theme.spacings.xsmall};
 	`}
 `;
 

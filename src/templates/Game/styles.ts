@@ -1,6 +1,16 @@
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
+import { Container } from 'components/Container';
+
+export const Main = styled.main`
+	margin-top: 20rem;
+
+	${media.greaterThan('medium')`
+		margin-top: 40rem;
+	`}
+`;
+
 export type CoverProps = {
 	src: string;
 };
@@ -18,8 +28,51 @@ export const Cover = styled.div<CoverProps>`
 		opacity: 0.4;
 
 		${media.greaterThan('medium')`
-			height: 69.3rem;
+			height: 61.3rem;
 			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
 		`}
 	`};
+`;
+
+export const Section = styled(Container).attrs({ as: 'section' })`
+	${({ theme }) => css`
+		margin-bottom: ${theme.spacings.xlarge};
+
+		${media.greaterThan('medium')`
+			margin-bottom: calc(${theme.spacings.xxlarge} * 2);
+		`}
+	`}
+`;
+
+export const SectionGameInfo = styled(Section)``;
+
+export const SectionGallery = styled(Section)`
+	display: none;
+
+	${media.greaterThan('medium')`
+		display: block;
+	`}
+`;
+
+export const SectionDescription = styled(Section)`
+	${({ theme }) => css`
+		.description__copyrights {
+			color: ${theme.colors.gray};
+			font-size: ${theme.font.sizes.xsmall};
+			font-weight: ${theme.font.light};
+		}
+	`}
+`;
+
+export const SectionGameDetails = styled(Section)`
+	${({ theme }) => css`
+		> section {
+			border-bottom: 0.1rem solid rgba(181, 181, 181, 0.3);
+			padding-bottom: ${theme.spacings.xlarge};
+
+			${media.greaterThan('medium')`
+			padding-bottom: calc(${theme.spacings.xxlarge} * 2);
+			`}
+		}
+	`}
 `;
