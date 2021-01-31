@@ -35,4 +35,16 @@ describe('<Wishlist />', () => {
 
 		expect(screen.getByTestId(/showcase mock/i)).toBeInTheDocument();
 	});
+
+	it('should render a message when theres no fav games', () => {
+		renderWithTheme(<Wishlist {...props} games={undefined} />);
+
+		expect(
+			screen.queryByRole('heading', { name: /population zero/i })
+		).not.toBeInTheDocument();
+
+		expect(
+			screen.getByRole('heading', { name: /Your wishlist is empty/i })
+		).toBeInTheDocument();
+	});
 });
