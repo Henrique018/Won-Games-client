@@ -4,9 +4,10 @@ import Heading from 'components/Heading';
 import Showcase from 'components/Showcase';
 
 import { Grid } from 'components/Grid';
+import { Divider } from 'components/Divider';
 import { Container } from 'components/Container';
-import GameCard, { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
+import GameCard, { GameCardProps } from 'components/GameCard';
 
 //import * as S from './styles';
 
@@ -32,6 +33,10 @@ const Wishlist = ({
 						<GameCard key={`game - ${index}`} {...game} />
 					))}
 				</Grid>
+			</Container>
+
+			<Container>
+				<Divider />
 			</Container>
 
 			<Showcase

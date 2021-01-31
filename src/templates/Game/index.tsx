@@ -1,3 +1,4 @@
+import { Divider } from 'components/Divider';
 import Showcase, { ShowcaseProps } from 'components/Showcase';
 import GameInfo, { GameInfoProps } from 'components/GameInfo';
 import Gallery, { GalleryImageProps } from 'components/Gallery';
@@ -44,6 +45,7 @@ const Game = ({
 
 				<S.SectionGameDetails>
 					<GameDetails {...gameDetails} />
+					<Divider />
 				</S.SectionGameDetails>
 
 				<Showcase {...upcomingGames} />
