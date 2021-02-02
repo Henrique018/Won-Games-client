@@ -16,11 +16,11 @@ describe('<Form />', () => {
 		  font-size: 1.4rem;
 		}
 
-		.c0 .styles__Wrapper-sc-1pokx8l-6 {
+		.c0 .sc-iBPRYJ {
 		  margin: 0.8rem 0 0.8rem;
 		}
 
-		.c0 .styles__Wrapper-mxua9d-0 {
+		.c0 .sc-bdfBwQ {
 		  margin: 2.4rem auto 1.6rem;
 		}
 

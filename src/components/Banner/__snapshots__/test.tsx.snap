@@ -67,11 +67,11 @@ exports[`<Banner /> should render the banner correctly 1`] = `
 }
 
 @media (max-width:1170px) {
-  .c0 .styles__Wrapper-sc-1g557fl-0 {
+  .c0 .sc-bdfBwQ {
     right: 0;
   }
 
-  .c0 .styles__Wrapper-sc-1g557fl-0::before {
+  .c0 .sc-bdfBwQ::before {
     display: none;
   }
 }
