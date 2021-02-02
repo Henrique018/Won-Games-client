@@ -19,4 +19,10 @@ export const WithPayment: Story<GameItemProps> = (args) => (
 
 WithPayment.args = {
 	downloadLink: 'https://wongames.com/download',
+	paymentInfo: {
+		number: '*** *** **** 4316',
+		flag: 'mastercard',
+		img: '/img/MasterCard.png',
+		purchaseDate: 'Purchase made on 02/01/2021 at 21:09',
+	},
 };
