@@ -35,6 +35,17 @@ describe('<Button />', () => {
 		});
 	});
 
+	it('should render a disabled version', () => {
+		const { debug } = renderWithTheme(<Button disabled>Download Now</Button>);
+
+		debug(screen.getByRole('button', { name: /Download Now/i }));
+		expect(
+			screen.getByRole('button', { name: /Download Now/i })
+		).toHaveStyleRule('cursor', 'not-allowed', {
+			modifier: ':disabled',
+		});
+	});
+
 	it('should render a full width button', () => {
 		renderWithTheme(<Button fullWidth>Download Now</Button>);
 
