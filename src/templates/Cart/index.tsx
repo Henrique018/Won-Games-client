@@ -13,6 +13,7 @@ import Heading from 'components/Heading';
 import Showcase from 'components/Showcase';
 
 import * as S from './styles';
+import Empty from 'components/Empty';
 
 export type CartProps = {
 	recommendedGames: GameCardProps[];
@@ -38,23 +39,32 @@ const CartPage = ({
 			</Container>
 
 			<Container>
-				<S.PaymentWrapper>
-					<div>
-						<CartList items={items} total={total} />
-					</div>
-					<PaymentOptions cards={cards} handlePayment={handlePayment} />
-				</S.PaymentWrapper>
-			</Container>
+				{items.length > 1 ? (
+					<>
+						<S.PaymentWrapper>
+							<div>
+								<CartList items={items} total={total} />
+							</div>
+							<PaymentOptions cards={cards} handlePayment={handlePayment} />
+						</S.PaymentWrapper>
 
-			<Container>
-				<S.Disclaimer>
-					<InfoCircle size={16} /> Your purchase is protected by a secure
-					connection from the WON platform. By purchasing from our store you
-					agree and agree to our <span>terms of use.</span> After making the
-					purchase you are entitled to a refund within a maximum of 30 days,
-					without any additional cost, as long as the download of the purchased
-					game has not occurred after your purchase.
-				</S.Disclaimer>
+						<S.Disclaimer>
+							<InfoCircle size={16} /> Your purchase is protected by a secure
+							connection from the WON platform. By purchasing from our store you
+							agree and agree to our <span>terms of use.</span> After making the
+							purchase you are entitled to a refund within a maximum of 30 days,
+							without any additional cost, as long as the download of the
+							purchased game has not occurred after your purchase.
+						</S.Disclaimer>
+					</>
+				) : (
+					<Empty
+						title="Your cart is currently empty"
+						description="Go back to the store and explore fun games with good offers"
+						hasLink
+					/>
+				)}
+
 				<Divider />
 			</Container>
 

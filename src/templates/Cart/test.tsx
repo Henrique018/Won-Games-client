@@ -43,9 +43,18 @@ jest.mock('components/Showcase', () => {
 	};
 });
 
+jest.mock('components/Empty', () => {
+	return {
+		__esModule: true,
+		default: function Mock() {
+			return <div data-testid="Empty mock"></div>;
+		},
+	};
+});
+
 describe('<CartPage />', () => {
 	it('should render all cart elements', () => {
-		const { container } = renderWithTheme(<CartPage {...props} />);
+		renderWithTheme(<CartPage {...props} />);
 
 		expect(
 			screen.getByRole('heading', { name: /My Cart/i })
@@ -54,6 +63,13 @@ describe('<CartPage />', () => {
 		expect(screen.getByTestId(/CartList mock/i)).toBeInTheDocument();
 		expect(screen.getByTestId(/PaymentOptions mock/i)).toBeInTheDocument();
 		expect(screen.getByTestId(/Showcase mock/i)).toBeInTheDocument();
+		expect(screen.queryByTestId(/empty mock/i)).not.toBeInTheDocument();
+	});
+
+	it('should render the empty component if there are no items', () => {
+		const { container } = renderWithTheme(<CartPage {...props} items={[]} />);
+
+		expect(screen.getByTestId(/empty mock/i)).toBeInTheDocument();
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
