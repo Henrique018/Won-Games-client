@@ -5,12 +5,11 @@ export const PaymentWrapper = styled.div`
 	${({ theme }) => css`
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1rem;
-		margin: ${theme.spacings.large};
+		gap: 3rem;
+		margin: ${theme.spacings.large} 0;
 
 		${media.greaterThan('medium')`
 			grid-template-columns: 2fr 1fr;
-			gap: 1rem;
 		`};
 	`};
 `;

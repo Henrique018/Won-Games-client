@@ -7,8 +7,11 @@ export const Wrapper = styled.div`
 		padding: ${theme.spacings.xsmall};
 
 		${CardItem}, ${AddCard} {
+			height: 5rem;
+			display: flex;
+			align-items: center;
 			background-color: ${theme.colors.lightGray};
-			padding: ${theme.spacings.xxsmall};
+			padding: 0 ${theme.spacings.xxsmall};
 			margin: ${theme.spacings.xxsmall} 0;
 			border-radius: 0.2rem;
 			cursor: pointer;
@@ -40,9 +43,7 @@ export const Footer = styled.div`
 export const CardsList = styled.div``;
 
 export const CardItem = styled.label`
-	display: flex;
 	justify-content: space-between;
-	align-items: center;
 `;
 
 export const CardInfo = styled.div`
