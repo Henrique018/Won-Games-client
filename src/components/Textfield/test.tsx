@@ -8,7 +8,7 @@ import Textfield from '.';
 
 describe('<Textfield />', () => {
 	it('should render with label', () => {
-		renderWithTheme(<Textfield label="text field label" labelFor="text" />);
+		renderWithTheme(<Textfield label="text field label" name="text" />);
 
 		expect(screen.getByLabelText(/text field label/i)).toBeInTheDocument();
 		expect(screen.getByText(/text field label/i)).toBeInTheDocument();
