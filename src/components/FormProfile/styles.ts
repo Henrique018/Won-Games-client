@@ -1,12 +1,7 @@
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
-export const Wrapper = styled.div`
-	${({ theme }) => css`
-		background-color: ${theme.colors.white};
-		padding: ${theme.spacings.xsmall} ${theme.spacings.small};
-	`}
-`;
+export const Wrapper = styled.div``;
 
 export const Form = styled.form`
 	${({ theme }) => css`

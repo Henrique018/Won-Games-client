@@ -2,9 +2,9 @@ import Heading from 'components/Heading';
 import { PaymentOptionsProps } from 'components/PaymentOptions';
 import * as S from './styles';
 
-export type CardListProps = Pick<PaymentOptionsProps, 'cards'>;
+export type CardsListProps = Pick<PaymentOptionsProps, 'cards'>;
 
-const CardsList = ({ cards }: CardListProps) => {
+const CardsList = ({ cards }: CardsListProps) => {
 	return (
 		<S.Wrapper>
 			<Heading size="small" lineBottom>
