@@ -1,10 +1,10 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import CardsList, { CardListProps } from '.';
+import CardsList, { CardsListProps } from '.';
 import cardsMock from 'components/PaymentOptions/mock';
 
 export default {
-	title: 'CardsList',
+	title: 'Profile/CardsList',
 	args: {
 		cards: cardsMock,
 	},
@@ -16,4 +16,4 @@ export default {
 	component: CardsList,
 } as Meta;
 
-export const Basic: Story<CardListProps> = (args) => <CardsList {...args} />;
+export const Basic: Story<CardsListProps> = (args) => <CardsList {...args} />;

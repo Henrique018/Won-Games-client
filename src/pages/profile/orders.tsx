@@ -1,10 +1,19 @@
-import FormProfile from 'components/FormProfile';
+import OrdersList, { OrdersProps } from 'components/OrdersList';
+import OrdersMock from 'components/OrdersList/mock';
 import Profile from 'templates/Profile';
 
-export default function Orders() {
+export function getServerSideProps() {
+	return {
+		props: {
+			items: OrdersMock,
+		},
+	};
+}
+
+export default function Orders({ items }: OrdersProps) {
 	return (
 		<Profile>
-			<FormProfile />
+			<OrdersList items={items} />
 		</Profile>
 	);
 }
