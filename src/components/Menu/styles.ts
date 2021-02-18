@@ -92,7 +92,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
 	${({ isOpen, theme }) => css`
 		display: flex;
 		flex-direction: column;
-		justify-content: space-space-between;
+		justify-content: space-between;
 
 		height: 100vh;
 		background-color: ${theme.colors.white};

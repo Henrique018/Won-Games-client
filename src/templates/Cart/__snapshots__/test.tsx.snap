@@ -126,10 +126,10 @@ exports[
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: space-justify;
-  -webkit-justify-content: space-space-between;
-  -ms-flex-pack: space-justify;
-  justify-content: space-space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   height: 100vh;
   background-color: #FAFAFA;
   position: fixed;
