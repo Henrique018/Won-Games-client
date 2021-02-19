@@ -14,6 +14,14 @@ export type GamesTemplateProps = {
 };
 
 const GamesTemplate = ({ games = [], filterItems }: GamesTemplateProps) => {
+	const handleOnFilter = () => {
+		return;
+	};
+
+	const handleShowMore = () => {
+		return;
+	};
+
 	return (
 		<Base>
 			<S.Main>
@@ -21,11 +29,7 @@ const GamesTemplate = ({ games = [], filterItems }: GamesTemplateProps) => {
 					<ExploreSidebar
 						items={filterItems}
 						initialValues={{ windows: true }}
-						onFilter={() => {
-							{
-								console.log('teste');
-							}
-						}}
+						onFilter={handleOnFilter}
 					/>
 				</S.SidebarWrapper>
 				<section>
@@ -35,7 +39,7 @@ const GamesTemplate = ({ games = [], filterItems }: GamesTemplateProps) => {
 								<GameCard key={`game - ${index}`} {...game} />
 							))}
 					</Grid>
-					<S.SeeMore>
+					<S.SeeMore role="button" onClick={handleShowMore}>
 						<p>See more</p>
 						<ArrowDown size={35} />
 					</S.SeeMore>

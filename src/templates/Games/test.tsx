@@ -27,10 +27,11 @@ jest.mock('components/GameCard', () => {
 describe('<Games />', () => {
 	it('should render all elements of Games page correctly', () => {
 		renderWithTheme(
-			<Games filterItems={filterItemsMock} games={gameCardsMock} />
+			<Games filterItems={filterItemsMock} games={gameCardsMock.slice(0, 3)} />
 		);
 
 		expect(screen.getByTestId('ExploreSidebar mock')).toBeInTheDocument();
-		expect(screen.getAllByTestId('GameCard mock')).toHaveLength(6);
+		expect(screen.getAllByTestId('GameCard mock')).toHaveLength(3);
+		expect(screen.getByRole('button', { name: /see more/i }));
 	});
 });
