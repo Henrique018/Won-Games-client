@@ -40,7 +40,9 @@ const Menu = ({ username }: MenuProps) => {
 					<Link href="/" passHref>
 						<S.MenuLink>Home</S.MenuLink>
 					</Link>
-					<S.MenuLink href="#">Explore</S.MenuLink>
+					<Link href="/games" passHref>
+						<S.MenuLink>Explore</S.MenuLink>
+					</Link>
 				</S.MenuNav>
 			</MatchMedia>
 
@@ -64,9 +66,11 @@ const Menu = ({ username }: MenuProps) => {
 					<CloseIcon aria-label="Close menu" onClick={() => setIsOpen(false)} />
 					<S.MenuNav>
 						<Link href="/" passHref>
-							<S.MenuLink href="#">Home</S.MenuLink>
+							<S.MenuLink>Home</S.MenuLink>
 						</Link>
-						<S.MenuLink href="#">Explore</S.MenuLink>
+						<Link href="/games" passHref>
+							<S.MenuLink>Explore</S.MenuLink>
+						</Link>
 						{!!username && (
 							<>
 								<S.MenuLink href="#">My account</S.MenuLink>
