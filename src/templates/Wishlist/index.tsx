@@ -36,7 +36,11 @@ const Wishlist = ({
 						))}
 					</Grid>
 				) : (
-					<Empty title="Your wishlist is empty" description="niog" hasLink />
+					<Empty
+						title="Your wishlist is empty"
+						description="Go back to catalog and explore fun games"
+						hasLink
+					/>
 				)}
 			</Container>
 			<Container>
