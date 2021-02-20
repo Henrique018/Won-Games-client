@@ -15,4 +15,10 @@ describe('<CartList />', () => {
 
 		expect(container.firstChild).toMatchSnapshot();
 	});
+
+	it('should render a button', () => {
+		renderWithTheme(<CartList {...cartMock} hasButton />);
+
+		expect(screen.getByRole('link', { name: /buy it now!/i }));
+	});
 });

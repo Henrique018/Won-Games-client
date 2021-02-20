@@ -11,6 +11,7 @@ export const Wrapper = styled.main`
 export const Footer = styled.footer`
 	${({ theme }) => css`
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 		padding: ${theme.spacings.small};
 		background-color: ${tint(0.2, theme.colors.lightGray)};
