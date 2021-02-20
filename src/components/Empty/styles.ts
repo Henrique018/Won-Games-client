@@ -22,5 +22,6 @@ export const Description = styled.p`
 		font-size: ${theme.font.sizes.large};
 		font-weight: ${theme.font.light};
 		margin-bottom: ${theme.spacings.medium};
+		text-align: center;
 	`}
 `;

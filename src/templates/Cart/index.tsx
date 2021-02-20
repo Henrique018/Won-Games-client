@@ -39,7 +39,7 @@ const CartPage = ({
 			</Container>
 
 			<Container>
-				{items.length > 1 ? (
+				{items?.length ? (
 					<>
 						<S.PaymentWrapper>
 							<div>

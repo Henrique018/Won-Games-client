@@ -23,3 +23,9 @@ export const Basic: Story<CartDropdownProps> = (args) => (
 		<CartDropdown {...args} />
 	</div>
 );
+
+export const EmptyDropdown: Story<CartDropdownProps> = () => (
+	<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+		<CartDropdown />
+	</div>
+);

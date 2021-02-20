@@ -65,6 +65,16 @@ exports[`<CartList /> should render correctly 1`] = `
 
 .c0 {
   background-color: #FAFAFA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
 }
 
 .c7 {
@@ -120,7 +130,7 @@ exports[`<CartList /> should render correctly 1`] = `
   }
 }
 
-<main
+<div
   class="c0"
 >
   <div
@@ -197,5 +207,5 @@ exports[`<CartList /> should render correctly 1`] = `
       R$ 335,00
     </strong>
   </footer>
-</main>
+</div>
 `;
