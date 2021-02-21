@@ -4,13 +4,15 @@ import { Menu2 as MenuIcon } from '@styled-icons/remix-fill';
 import {
 	Close as CloseIcon,
 	Search as SearchIcon,
-	ShoppingCart as ShoppingCartIcon,
 } from '@styled-icons/material-outlined';
 
 import * as S from './styles';
 import Logo from 'components/Logo';
-import MatchMedia from 'components/MediaMatch';
 import Button from 'components/Button';
+import CartIcon from 'components/CartIcon';
+import MatchMedia from 'components/MediaMatch';
+import CartDropdown from 'components/CartDropdown';
+import UserDropdown from 'components/UserDropdown';
 
 export type MenuProps = {
 	username?: string;
@@ -51,14 +53,27 @@ const Menu = ({ username }: MenuProps) => {
 					<SearchIcon aria-label="search" />
 				</S.IconWrapper>
 				<S.IconWrapper>
-					<ShoppingCartIcon aria-label="open shopping cart" />
+					<MatchMedia greaterThan="medium">
+						<CartDropdown />
+					</MatchMedia>
+					<MatchMedia lessThan="medium">
+						<Link href="/cart" passHref>
+							<a>
+								<CartIcon />
+							</a>
+						</Link>
+					</MatchMedia>
 				</S.IconWrapper>
 			</S.MenuGroup>
 
 			<MatchMedia greaterThan="medium">
-				<Link href="/sign-up" passHref>
-					<Button>Sign up</Button>
-				</Link>
+				{username ? (
+					<UserDropdown username={username} />
+				) : (
+					<Link href="/sign-up" passHref>
+						<Button>Sign up</Button>
+					</Link>
+				)}
 			</MatchMedia>
 
 			<MatchMedia lessThan="medium">
@@ -73,8 +88,12 @@ const Menu = ({ username }: MenuProps) => {
 						</Link>
 						{!!username && (
 							<>
-								<S.MenuLink href="#">My account</S.MenuLink>
-								<S.MenuLink href="#">My wishlist</S.MenuLink>
+								<Link href="/profile/me" passHref>
+									<S.MenuLink>My account</S.MenuLink>
+								</Link>
+								<Link href="/wishlist" passHref>
+									<S.MenuLink>My wishlist</S.MenuLink>
+								</Link>
 							</>
 						)}
 					</S.MenuNav>

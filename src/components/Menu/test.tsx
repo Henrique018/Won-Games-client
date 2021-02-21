@@ -10,7 +10,7 @@ describe('<Menu />', () => {
 		expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument();
 		expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument();
 		expect(screen.getByLabelText(/search/i)).toBeInTheDocument();
-		expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument();
+		expect(screen.getAllByLabelText(/shopping cart/i)).toHaveLength(2);
 	});
 
 	it('should handle open/close menu', () => {
@@ -45,8 +45,8 @@ describe('<Menu />', () => {
 	it('should show the my account and my wishlist when logged in ', () => {
 		renderWithTheme(<Menu username="Henrique" />);
 		expect(screen.queryByText(/sign in now/i)).not.toBeInTheDocument();
-		expect(screen.getAllByText(/sign up/i)).toHaveLength(1);
-		expect(screen.getByText(/my account/i)).toBeInTheDocument();
-		expect(screen.getByText(/my wishlist/i)).toBeInTheDocument();
+		expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
+		expect(screen.getAllByText(/my account/i)).toHaveLength(2);
+		expect(screen.getAllByText(/wishlist/i)).toHaveLength(2);
 	});
 });

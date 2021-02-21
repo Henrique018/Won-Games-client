@@ -24,14 +24,14 @@ exports[
   justify-content: space-between;
 }
 
-.c20 {
+.c25 {
   margin-top: 4.8rem;
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
-.c24 {
+.c29 {
   margin-top: 4.0rem;
   padding-bottom: 1.6rem;
   padding-top: 4.0rem;
@@ -118,7 +118,7 @@ exports[
   animation: hoverAnimation 0.2s forwards;
 }
 
-.c15 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -145,7 +145,7 @@ exports[
   z-index: 20;
 }
 
-.c15 > svg {
+.c20 > svg {
   position: absolute;
   top: 0;
   right: 0;
@@ -155,7 +155,7 @@ exports[
   cursor: pointer;
 }
 
-.c15 .c9 {
+.c20 .c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,7 +176,7 @@ exports[
   flex: 1;
 }
 
-.c15 .c11 {
+.c20 .c11 {
   color: #030517;
   font-weight: 600;
   font-size: 2.0rem;
@@ -189,7 +189,7 @@ exports[
   transition: transform 0.3s ease-in-out;
 }
 
-.c15 .c16 {
+.c20 .c21 {
   -webkit-transform: translateY(3rem);
   -ms-transform: translateY(3rem);
   transform: translateY(3rem);
@@ -198,7 +198,7 @@ exports[
   transition: transform 0.3s ease-in-out;
 }
 
-.c17 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -213,13 +213,13 @@ exports[
   padding: 0 4.8rem 4.8rem;
 }
 
-.c17 > span {
+.c22 > span {
   display: block;
   font-size: 1.2rem;
   margin: 2.4rem 0;
 }
 
-.c19 {
+.c24 {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: #F231A5;
@@ -232,21 +232,13 @@ exports[
   height: 3.3rem;
 }
 
-.c26 {
+.c31 {
   color: #030517;
   width: 11rem;
   height: 3.3rem;
 }
 
-.c3 {
-  display: none;
-}
-
-.c8 {
-  display: none;
-}
-
-.c14 {
+.c19 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -272,11 +264,11 @@ exports[
   padding: 0.8rem 3.2rem;
 }
 
-.c14:hover {
+.c19:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
 }
 
-.c18 {
+.c23 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -303,11 +295,81 @@ exports[
   width: 100%;
 }
 
-.c18:hover {
+.c23:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
 }
 
-.c22 {
+.c17 {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #FAFAFA;
+  position: relative;
+}
+
+.c3 {
+  display: none;
+}
+
+.c8 {
+  display: none;
+}
+
+.c15 {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.c16 {
+  position: relative;
+  cursor: pointer;
+  color: #FAFAFA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 2.4rem;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #FAFAFA;
+  color: #030517;
+  margin-top: 2.4rem;
+  position: absolute;
+  right: 0;
+  -webkit-transition: -webkit-transform 0.2s ease-in,opacity 0.3s ease-in-out;
+  -webkit-transition: transform 0.2s ease-in,opacity 0.3s ease-in-out;
+  transition: transform 0.2s ease-in,opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: translateY(-2rem);
+  -ms-transform: translateY(-2rem);
+  transform: translateY(-2rem);
+}
+
+.c18:before {
+  content: '';
+  position: absolute;
+  border-right: 1.2rem solid transparent;
+  border-left: 1.2rem solid transparent;
+  border-bottom: 1.2rem solid #FAFAFA;
+  top: -1.2rem;
+  right: 2.4rem;
+}
+
+.c27 {
   color: #FAFAFA;
   padding-left: 0.8rem;
   border-left: 0.7rem solid #3CD3C1;
@@ -315,14 +377,14 @@ exports[
   font-weight: 600;
 }
 
-.c29 {
+.c34 {
   color: #030517;
   position: relative;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
-.c29::after {
+.c34::after {
   position: absolute;
   left: 0;
   bottom: -1rem;
@@ -331,25 +393,25 @@ exports[
   border-bottom: 0.5rem solid #3CD3C1;
 }
 
-.c29::after {
+.c34::after {
   width: 2.5rem;
   bottom: -0.3rem;
 }
 
-.c25 .c21 {
+.c30 .c26 {
   text-transform: uppercase;
   margin-bottom: 1.6rem;
 }
 
-.c27 {
+.c32 {
   display: grid;
   grid-template-columns: minmax(auto,50%) 1fr;
   gap: 3.2rem;
   margin-top: 3.2rem;
 }
 
-.c28 a,
-.c28 span {
+.c33 a,
+.c33 span {
   display: block;
   color: #2E2F42;
   font-size: 1.4rem;
@@ -358,17 +420,17 @@ exports[
   text-decoration: none;
 }
 
-.c28 a {
+.c33 a {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-.c28 a:hover {
+.c33 a:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c30 {
+.c35 {
   color: #8F8F8F;
   font-size: 1.2rem;
   margin-top: 4.0rem;
@@ -376,7 +438,7 @@ exports[
   text-align: center;
 }
 
-.c23 {
+.c28 {
   background: rgba(181,181,181,0.3);
   border: 0;
   height: 0.1rem;
@@ -384,7 +446,7 @@ exports[
 }
 
 @media (min-width:768px) {
-  .c24 {
+  .c29 {
     padding-top: calc(5.6rem * 2);
     -webkit-clip-path: polygon(0 15%,100% 0%,100% 100%,0 100%);
     clip-path: polygon(0 15%,100% 0%,100% 100%,0 100%);
@@ -436,19 +498,25 @@ exports[
 }
 
 @media (min-width:768px) {
-  .c22 {
-    font-size: 2.8rem;
+  .c14 .sc-kfzAmx {
+    min-width: 40rem;
   }
 }
 
 @media (min-width:768px) {
   .c27 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c32 {
     grid-template-columns: repeat(4,1fr);
   }
 }
 
 @media (min-width:768px) {
-  .c23 {
+  .c28 {
     margin: calc(5.6rem * 2.5) auto 3.2rem;
   }
 }
@@ -628,30 +696,87 @@ exports[
         <div
           class="c4"
         >
-          <svg
-            aria-hidden="true"
-            aria-label="open shopping cart"
-            class="c5"
-            fill="currentColor"
-            focusable="false"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            class="c8"
           >
-            <path
-              d="M0 0h24v24H0V0z"
-              fill="none"
-            />
-            <path
-              d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0020.01 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-            />
-          </svg>
+            <div
+              class="c14"
+            >
+              <div
+                class="c15"
+              >
+                <div
+                  class="c16"
+                >
+                  <main
+                    class="c17"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      aria-label="Shopping cart"
+                      class="c5"
+                      fill="currentColor"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 0h24v24H0V0z"
+                        fill="none"
+                      />
+                      <path
+                        d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0020.01 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </main>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="c18"
+                >
+                  <div
+                    data-testid="CartList mock"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c3"
+          >
+            <a
+              href="/cart"
+            >
+              <main
+                class="c17"
+              >
+                <svg
+                  aria-hidden="true"
+                  aria-label="Shopping cart"
+                  class="c5"
+                  fill="currentColor"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0V0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49A.996.996 0 0020.01 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                </svg>
+              </main>
+            </a>
+          </div>
         </div>
       </div>
       <div
         class="c8"
       >
         <button
-          class="c14"
+          class="c19"
           href="/sign-up"
         >
           <span>
@@ -664,7 +789,7 @@ exports[
       >
         <nav
           aria-hidden="true"
-          class="c15"
+          class="c20"
         >
           <svg
             aria-hidden="true"
@@ -700,10 +825,10 @@ exports[
             </a>
           </div>
           <div
-            class="c16 c17"
+            class="c21 c22"
           >
             <button
-              class="c18"
+              class="c23"
               href="/sign-in"
             >
               <span>
@@ -714,7 +839,7 @@ exports[
               or
             </span>
             <a
-              class="c19"
+              class="c24"
               href="/sign-up"
               title="Sign up"
             >
@@ -726,13 +851,13 @@ exports[
     </div>
   </div>
   <div
-    class="c20"
+    class="c25"
   >
     <div
       class="c1"
     >
       <h2
-        class="c21 c22"
+        class="c26 c27"
         color="white"
       >
         My cart
@@ -745,7 +870,7 @@ exports[
         data-testid="Empty mock"
       />
       <hr
-        class="c23"
+        class="c28"
       />
     </div>
     <div
@@ -753,16 +878,16 @@ exports[
     />
   </div>
   <section
-    class="c24"
+    class="c29"
   >
     <div
       class="c1"
     >
       <footer
-        class="c25"
+        class="c30"
       >
         <div
-          class="c26"
+          class="c31"
           color="black"
         >
           <svg
@@ -848,13 +973,13 @@ exports[
           </svg>
         </div>
         <div
-          class="c27"
+          class="c32"
         >
           <div
-            class="c28"
+            class="c33"
           >
             <h2
-              class="c21 c29"
+              class="c26 c34"
               color="black"
             >
               Contact Us
@@ -866,10 +991,10 @@ exports[
             </a>
           </div>
           <div
-            class="c28"
+            class="c33"
           >
             <h2
-              class="c21 c29"
+              class="c26 c34"
               color="black"
             >
               Follow us
@@ -908,10 +1033,10 @@ exports[
             </nav>
           </div>
           <div
-            class="c28"
+            class="c33"
           >
             <h2
-              class="c21 c29"
+              class="c26 c34"
               color="black"
             >
               Links
@@ -938,10 +1063,10 @@ exports[
           </div>
           <div
             aria-labelledby="footer-contact"
-            class="c28"
+            class="c33"
           >
             <h2
-              class="c21 c29"
+              class="c26 c34"
               color="black"
             >
               Location
@@ -958,7 +1083,7 @@ exports[
           </div>
         </div>
         <div
-          class="c30"
+          class="c35"
         >
           Won Games © Todos os direitos reservados.
         </div>

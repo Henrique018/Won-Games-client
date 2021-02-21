@@ -60,7 +60,7 @@ describe('<CartPage />', () => {
 			screen.getByRole('heading', { name: /My Cart/i })
 		).toBeInTheDocument();
 
-		expect(screen.getByTestId(/CartList mock/i)).toBeInTheDocument();
+		expect(screen.getAllByTestId(/CartList mock/i)).toHaveLength(2);
 		expect(screen.getByTestId(/PaymentOptions mock/i)).toBeInTheDocument();
 		expect(screen.getByTestId(/Showcase mock/i)).toBeInTheDocument();
 		expect(screen.queryByTestId(/empty mock/i)).not.toBeInTheDocument();
