@@ -20,7 +20,7 @@ describe('<GameInfo />', () => {
 			)
 		).toBeInTheDocument();
 
-		expect(screen.getByText('$215,00')).toBeInTheDocument();
+		expect(screen.getByText('$215.00')).toBeInTheDocument();
 	});
 
 	it('should render with two buttons', () => {

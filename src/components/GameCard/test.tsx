@@ -4,10 +4,11 @@ import { renderWithTheme } from 'utils/test/helper';
 import GameCard from '.';
 
 const props = {
+	slug: 'population-zero',
 	title: 'Population zero',
 	developer: 'Rockstar Games',
 	img: '/img/population-zero.png',
-	price: '235',
+	price: 235,
 };
 
 describe('<GameCard />', () => {
@@ -28,28 +29,33 @@ describe('<GameCard />', () => {
 		).toBeInTheDocument();
 
 		expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
+
+		expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+			'href',
+			`/game/${props.slug}`
+		);
 	});
 
 	it('should render the price correctly', () => {
 		renderWithTheme(<GameCard {...props} />);
 
-		expect(screen.getByText(props.price)).toHaveStyle({
+		expect(screen.getByText(`$235.00`)).toHaveStyle({
 			background: '#3CD3C1',
 		});
 
-		expect(screen.getByText(props.price)).not.toHaveStyle({
+		expect(screen.getByText(`$235.00`)).not.toHaveStyle({
 			textDecoration: 'line-through',
 		});
 	});
 
 	it('should render a line-through the old price', () => {
-		renderWithTheme(<GameCard promotionalPrice="R$ 199,90" {...props} />);
+		renderWithTheme(<GameCard promotionalPrice={199.9} {...props} />);
 
-		expect(screen.getByText(props.price)).toHaveStyle({
+		expect(screen.getByText(`$235.00`)).toHaveStyle({
 			textDecoration: 'line-through',
 		});
 
-		expect(screen.getByText('R$ 199,90')).not.toHaveStyle({
+		expect(screen.getByText('$199.90')).not.toHaveStyle({
 			textDecoration: 'line-through',
 		});
 	});
@@ -73,7 +79,7 @@ describe('<GameCard />', () => {
 	it('should render a ribbon when there is a discount', () => {
 		renderWithTheme(
 			<GameCard
-				promotionalPrice="R$ 199,90"
+				promotionalPrice={199.9}
 				ribbonText="20% OFF"
 				ribbonColor="secondary"
 				{...props}

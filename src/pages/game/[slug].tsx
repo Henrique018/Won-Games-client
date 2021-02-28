@@ -1,55 +1,68 @@
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+
 import Game, { GameTemplateProps } from 'templates/Game';
 
-import galleryMock from 'components/Gallery/mock';
+import { initializeApollo } from 'utils/apollo';
+import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games';
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames';
+import {
+	QueryGameBySlug,
+	QueryGameBySlugVariables,
+} from 'graphql/generated/QueryGameBySlug';
+
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
 
+const apolloClient = initializeApollo();
+
 export default function Index(props: GameTemplateProps) {
+	const router = useRouter();
+
+	if (router.isFallback) return null;
 	return <Game {...props} />;
 }
 
-export function getStaticPaths() {
-	return {
-		paths: [{ params: { slug: 'metal-gear' } }],
-		fallback: false,
-	};
+export async function getStaticPaths() {
+	const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
+		query: QUERY_GAMES,
+		variables: { limit: 9 },
+	});
+
+	const paths = data.games.map(({ slug }) => ({ params: { slug } }));
+	return { paths, fallback: true };
 }
 
-export async function getStaticProps() {
-	const descriptionHTML = `
-	You are Snake, a government agent on a mission to regain control of a secret nuclear weapons base from terrorist hands.
-	<br><br>
-	Now the international best-selling PlayStation game comes to the PC with better graphics, added features, and new gameplay modes!  Unlike anything you've played before, Metal Gear Solid introduces a new genre of gaming where ninja-like stealth and cool head are your best weapons for survival
-	<br><br>
-	<ul>
-		<li>
-			VR Missions Game included!</li>
-			<li>Optional 1st person play mode thrusts you into the action from the moment you suit up.</li>
-			<li>Multiple game controller support and improved quick-save function for ease of play.</li>
-			</ul>
-			<p class="description__copyrights">
-      © Konami Digital Entertainment
-			</p>
-`;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const { data } = await apolloClient.query<
+		QueryGameBySlug,
+		QueryGameBySlugVariables
+	>({ query: QUERY_GAME_BY_SLUG, variables: { slug: String(params!.slug) } });
+
+	if (!data.games.length) return { notFound: true };
+
+	const game = data.games[0];
 	return {
 		props: {
-			cover:
-				'https://images.gog-statics.com/e7c6ab0d300a11ed9195f0d8bf65954d042a2d4d405d99069edb3fbe3b1906c8_bg_crop_1366x655.jpg',
+			revalidate: 60,
+			cover: `http://localhost:1337${game.cover!.url}`,
 			gameInfo: {
-				title: 'METAL GEAR SOLID',
-				price: '49.89',
-				description:
-					'You are Snake, a government agent on a mission to regain control of a secret nuclear weaponsbase from terrorist hands.',
+				title: game.name,
+				description: game.short_description,
+				price: game.price,
 			},
-			gallery: galleryMock,
-			description: descriptionHTML,
+			gallery: game.gallery.map((image) => ({
+				src: `http://localhost:1337${image.url}`,
+				alternativeText: image.label,
+			})),
+			description: game.description,
 			gameDetails: {
-				developer: 'Konami Digital Entertainment',
-				releaseDate: '2000-07-25T23:00:00',
-				platforms: ['windows'],
-				publisher: 'Konami Digital Entertainment',
-				rating: 'BR16',
-				genres: ['adventure', 'action', 'stealth'],
+				developer: game.developers[0].name,
+				publisher: game.publisher?.name,
+				releaseDate: game.release_date,
+				platforms: game.platforms.map((platform) => platform.name),
+				rating: game.rating,
+				genres: game.categories.map((category) => category.name),
 			},
 			upcomingGames: {
 				title: 'Upcoming',
@@ -62,4 +75,4 @@ export async function getStaticProps() {
 			},
 		},
 	};
-}
+};

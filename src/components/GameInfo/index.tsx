@@ -8,10 +8,11 @@ import Heading from 'components/Heading';
 export type GameInfoProps = {
 	title: string;
 	description: string;
-	price: string;
+	price: number;
 };
 
 import * as S from './styles';
+import { formatPrice } from 'utils/formatPrice';
 
 const GameInfo = ({ title, description, price }: GameInfoProps) => {
 	return (
@@ -19,7 +20,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => {
 			<Heading lineBottom lineColor="primary">
 				{title}
 			</Heading>
-			<Ribbon color="secondary">{`$${price}`}</Ribbon>
+			<Ribbon color="secondary">{formatPrice(price)}</Ribbon>
 
 			<S.Description>{description}</S.Description>
 

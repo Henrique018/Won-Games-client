@@ -6,10 +6,11 @@ export default {
 	title: 'GameCard',
 	component: GameCard,
 	args: {
+		slug: 'population-zero',
 		title: 'Population zero',
 		developer: 'Rockstar Games',
 		img: '/img/population-zero.png',
-		price: 'R$ 235,00',
+		price: 235,
 	},
 	argTypes: {
 		onFav: { action: 'clicked' },
@@ -24,7 +25,7 @@ export const Basic: Story<GameCardProps> = (args) => (
 
 export const WithRibbon: Story<GameCardProps> = (args) => (
 	<div style={{ width: '30rem' }}>
-		<GameCard promotionalPrice="R$ 199.90" {...args} />
+		<GameCard promotionalPrice={199.9} {...args} />
 	</div>
 );
 

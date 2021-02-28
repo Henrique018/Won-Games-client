@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
 	FavoriteBorder,
 	Favorite,
@@ -7,13 +8,15 @@ import {
 import * as S from './styles';
 import Button from 'components/Button';
 import Ribbon, { sizeProps, colorProps } from 'components/Ribbon';
+import { formatPrice } from 'utils/formatPrice';
 
 export type GameCardProps = {
+	slug: string;
 	img: string;
 	title: string;
 	developer: string;
-	price: string;
-	promotionalPrice?: string;
+	price: number;
+	promotionalPrice?: number;
 	ribbonText?: React.ReactNode;
 	ribbonColor?: colorProps;
 	ribbonSize?: sizeProps;
@@ -22,6 +25,7 @@ export type GameCardProps = {
 };
 
 const GameCard = ({
+	slug,
 	img,
 	title,
 	developer,
@@ -40,15 +44,18 @@ const GameCard = ({
 					{ribbonText}
 				</Ribbon>
 			)}
-			<S.ImageBox>
-				<img src={img} alt={title} />
-			</S.ImageBox>
+			<Link href={`game/${slug}`} passHref>
+				<S.ImageBox>
+					<img src={img} alt={title} />
+				</S.ImageBox>
+			</Link>
 			<S.Content>
-				<S.Info>
-					<S.Title>{title}</S.Title>
-					<S.Developer>{developer}</S.Developer>
-				</S.Info>
-
+				<Link href={`game/${slug}`} passHref>
+					<S.Info>
+						<S.Title>{title}</S.Title>
+						<S.Developer>{developer}</S.Developer>
+					</S.Info>
+				</Link>
 				<S.FavButton onClick={onFav} role="button">
 					{favorite ? (
 						<Favorite aria-label="remove from wishlist" />
@@ -58,8 +65,10 @@ const GameCard = ({
 				</S.FavButton>
 
 				<S.BuyBox>
-					{!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
-					<S.Price>{promotionalPrice || price}</S.Price>
+					{!!promotionalPrice && (
+						<S.Price isPromotional>{formatPrice(price)}</S.Price>
+					)}
+					<S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
 					<Button icon={<AddShoppingCart />} size="small" />
 				</S.BuyBox>
 			</S.Content>
