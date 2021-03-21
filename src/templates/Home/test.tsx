@@ -10,12 +10,15 @@ import { renderWithTheme } from 'utils/test/helper';
 
 const props = {
 	banners: bannerMock,
+	newGamesTitle: 'new games',
 	newGames: gamesMock,
+	mostPopularGamesTitle: 'most popular games',
 	mostPopularHighlight: highlightMock,
+	upcomingGamesTitle: 'upcoming games',
 	mostPopularGames: gamesMock,
 	upcomingGames: gamesMock,
 	upcomingHighlight: highlightMock,
-	moreUpcomingGames: gamesMock,
+	freeGamesTitle: 'free games',
 	freeGamesHighlight: highlightMock,
 	freeGames: gamesMock,
 };
@@ -41,8 +44,7 @@ jest.mock('components/Showcase', () => {
 describe('<Home />', () => {
 	it('should render with banner and showcases', () => {
 		renderWithTheme(<Home {...props} />);
-
 		expect(screen.getByTestId('Banner mock')).toBeInTheDocument();
-		expect(screen.getAllByTestId('Showcase mock')).toHaveLength(5);
+		expect(screen.getAllByTestId('Showcase mock')).toHaveLength(4);
 	});
 });
