@@ -53,7 +53,7 @@ export interface QueryRecommended_recommended_section {
   __typename: "ComponentPagePopularGames";
   title: string | null;
   highlight: QueryRecommended_recommended_section_highlight | null;
-  games: QueryRecommended_recommended_section_games[] | null;
+  games: QueryRecommended_recommended_section_games[];
 }
 
 export interface QueryRecommended_recommended {
