@@ -8,6 +8,7 @@ import highlightMock from 'components/Highlight/mock';
 
 const props: WishlistProps = {
 	games: gamesMock,
+	recommendedTitle: 'you may like these games',
 	recommendedGames: gamesMock.slice(0, 2),
 	recommendedHighlight: highlightMock,
 };

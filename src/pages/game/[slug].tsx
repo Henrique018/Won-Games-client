@@ -14,6 +14,10 @@ import {
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
 
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended';
+import { QueryRecommended } from 'graphql/generated/QueryRecommended';
+import { gamesMapper } from 'utils/mappers';
+
 const apolloClient = initializeApollo();
 
 export default function Index(props: GameTemplateProps) {
@@ -34,6 +38,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	//get game info
 	const { data } = await apolloClient.query<
 		QueryGameBySlug,
 		QueryGameBySlugVariables
@@ -42,6 +47,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	if (!data.games.length) return { notFound: true };
 
 	const game = data.games[0];
+
+	//get recommended games
+	const { data: recommended } = await apolloClient.query<QueryRecommended>({
+		query: QUERY_RECOMMENDED,
+	});
+
 	return {
 		props: {
 			revalidate: 60,
@@ -70,8 +81,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 				highlight: highlightMock,
 			},
 			recommendedGames: {
-				title: 'You may like these games',
-				games: gamesMock,
+				title: recommended.recommended?.section?.title,
+				games: gamesMapper(recommended.recommended?.section?.games),
 			},
 		},
 	};

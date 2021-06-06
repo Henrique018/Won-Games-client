@@ -16,6 +16,7 @@ export type GameTemplateProps = {
 	gameDetails: GameDetailsProps;
 	upcomingGames: ShowcaseProps;
 	recommendedGames: ShowcaseProps;
+	recommendedTitle: string;
 };
 
 const Game = ({
@@ -26,6 +27,7 @@ const Game = ({
 	gameDetails,
 	upcomingGames,
 	recommendedGames,
+	recommendedTitle,
 }: GameTemplateProps) => {
 	return (
 		<Base>
@@ -50,7 +52,7 @@ const Game = ({
 
 				<Showcase {...upcomingGames} />
 
-				<Showcase {...recommendedGames} />
+				<Showcase title={recommendedTitle} {...recommendedGames} />
 			</S.Main>
 		</Base>
 	);
