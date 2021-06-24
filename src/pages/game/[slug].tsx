@@ -31,7 +31,7 @@ export default function Index(props: GameTemplateProps) {
 export async function getStaticPaths() {
 	const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
 		query: QUERY_GAMES,
-		variables: { limit: 9 },
+		variables: { limit: 15 },
 	});
 
 	const paths = data.games.map(({ slug }) => ({ params: { slug } }));

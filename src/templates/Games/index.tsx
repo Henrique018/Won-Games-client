@@ -1,3 +1,4 @@
+import { useQueryGames } from 'graphql/queries/games';
 import { ArrowIosDownwardOutline as ArrowDown } from '@styled-icons/evaicons-outline/ArrowIosDownwardOutline';
 
 import Base from 'templates/Base';
@@ -13,13 +14,17 @@ export type GamesTemplateProps = {
 	filterItems: ItemProps[];
 };
 
-const GamesTemplate = ({ games = [], filterItems }: GamesTemplateProps) => {
+const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+	const { data, loading, fetchMore } = useQueryGames({
+		variables: { limit: 15 },
+	});
+
 	const handleOnFilter = () => {
 		return;
 	};
 
 	const handleShowMore = () => {
-		return;
+		fetchMore({ variables: { limit: 15, start: data?.games?.length } });
 	};
 
 	return (
@@ -32,18 +37,29 @@ const GamesTemplate = ({ games = [], filterItems }: GamesTemplateProps) => {
 						onFilter={handleOnFilter}
 					/>
 				</S.SidebarWrapper>
-				<section>
-					<Grid>
-						{games?.length &&
-							games?.map((game, index) => (
-								<GameCard key={`game - ${index}`} {...game} />
-							))}
-					</Grid>
-					<S.SeeMore role="button" onClick={handleShowMore}>
-						<p>See more</p>
-						<ArrowDown size={35} />
-					</S.SeeMore>
-				</section>
+				{loading ? (
+					'Loading...'
+				) : (
+					<section>
+						<Grid>
+							{data?.games?.length &&
+								data?.games?.map((game, index) => (
+									<GameCard
+										key={`game - ${index}`}
+										title={game.name}
+										img={`http://localhost:1337${game.cover?.url}`}
+										price={game.price}
+										slug={game.slug}
+										developer={game.developers[0].name}
+									/>
+								))}
+						</Grid>
+						<S.SeeMore role="button" onClick={handleShowMore}>
+							<p>See more</p>
+							<ArrowDown size={35} />
+						</S.SeeMore>
+					</section>
+				)}
 			</S.Main>
 		</Base>
 	);

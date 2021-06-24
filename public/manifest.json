@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#06092B",
-  "description": "Boilerlate utilizando Typescript, React, NextJS e Styled Components!",
+  "description": "Won Games, a loja de jogos com o melhor preço!",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B"

@@ -12,6 +12,7 @@ const props = {
 	items: cartMock.items,
 	total: cartMock.total,
 	cards: paymentCardsMock,
+	recommendedTitle: 'You may like these games',
 	recommendedGames: gamesMock,
 	recommendedHighlight: highlightMock,
 };

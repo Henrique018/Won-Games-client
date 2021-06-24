@@ -12,21 +12,15 @@ export default function GamesPage(props: GamesTemplateProps) {
 export async function getStaticProps() {
 	const client = initializeApollo();
 
-	const { data } = await client.query<QueryGames, QueryGamesVariables>({
+	await client.query<QueryGames, QueryGamesVariables>({
 		query: QUERY_GAMES,
-		variables: { limit: 9 },
+		variables: { limit: 15 },
 	});
 
 	return {
 		props: {
 			revalidate: true,
-			games: data.games.map((game) => ({
-				title: game.name,
-				slug: game.slug,
-				developer: game.developers[0].name,
-				img: `http://localhost:1337${game.cover!.url}`,
-				price: game.price,
-			})),
+			initialApolloState: client.cache.extract(),
 			filterItems: filterItemsMock,
 		},
 	};
