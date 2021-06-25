@@ -77,7 +77,6 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 	const client = initializeApollo();
 
 	await client.query<QueryGames, QueryGamesVariables>({
-		notifyOnNetworkStatusChange: true,
 		query: QUERY_GAMES,
 		variables: {
 			limit: 15,

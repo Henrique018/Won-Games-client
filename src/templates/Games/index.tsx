@@ -25,6 +25,7 @@ export type GamesTemplateProps = {
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 	const { push, query } = useRouter();
 	const { data, loading, fetchMore } = useQueryGames({
+		notifyOnNetworkStatusChange: true,
 		variables: {
 			limit: 15,
 			where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -40,7 +41,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 		return;
 	};
 
-	const handleShowMore = () => {
+	const handleSeeMore = () => {
 		fetchMore({ variables: { limit: 15, start: data?.games?.length } });
 	};
 
@@ -59,9 +60,9 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 				</S.SidebarWrapper>
 
 				<section>
-					<Grid>
-						{data?.games?.length ? (
-							<>
+					{data?.games?.length ? (
+						<>
+							<Grid>
 								{data?.games?.map((game, index) => (
 									<GameCard
 										key={`game - ${index}`}
@@ -72,27 +73,27 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 										developer={game.developers[0].name}
 									/>
 								))}
-							</>
-						) : (
-							<Empty
-								title="nothing here..."
-								description="No games found with specified filters"
-							/>
-						)}
-					</Grid>
-					<S.SeeMore>
-						{loading ? (
-							<S.SeeMoreLoading
-								src="img/dots.svg"
-								alt="Loading more games..."
-							/>
-						) : (
-							<S.SeeMoreButton role="button" onClick={handleShowMore}>
-								<p>See more</p>
-								<ArrowDown size={35} />
-							</S.SeeMoreButton>
-						)}
-					</S.SeeMore>
+							</Grid>
+							<S.SeeMore>
+								{loading ? (
+									<S.SeeMoreLoading
+										src="/img/dots.svg"
+										alt="Loading more games..."
+									/>
+								) : (
+									<S.SeeMoreButton role="button" onClick={handleSeeMore}>
+										<p>See More</p>
+										<ArrowDown size={35} />
+									</S.SeeMoreButton>
+								)}
+							</S.SeeMore>
+						</>
+					) : (
+						<Empty
+							title="nothing here..."
+							description="No games found with specified filters"
+						/>
+					)}
 				</section>
 			</S.Main>
 		</Base>
