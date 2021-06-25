@@ -21,6 +21,13 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SeeMore = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 10rem;
+`;
+
+export const SeeMoreButton = styled.div`
 	${({ theme }) => css`
 		text-align: center;
 		text-transform: uppercase;
@@ -34,4 +41,8 @@ export const SeeMore = styled.div`
 			margin-top: ${theme.spacings.xxsmall};
 		}
 	`}
+`;
+
+export const SeeMoreLoading = styled.img`
+	width: 4rem;
 `;

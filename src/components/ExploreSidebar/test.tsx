@@ -13,7 +13,7 @@ describe('<ExploreSidebar />', () => {
 			screen.getByRole('heading', { name: /sort by/i })
 		).toBeInTheDocument();
 		expect(
-			screen.getByRole('heading', { name: /System/i })
+			screen.getByRole('heading', { name: /Platforms/i })
 		).toBeInTheDocument();
 		expect(screen.getByRole('heading', { name: /Genre/i })).toBeInTheDocument();
 	});
@@ -40,7 +40,7 @@ describe('<ExploreSidebar />', () => {
 		renderWithTheme(
 			<ExploreSidebar
 				items={items}
-				initialValues={{ windows: true, sort_by: 'low-to-high' }}
+				initialValues={{ platforms: ['windows'], sort_by: 'low-to-high' }}
 				onFilter={jest.fn}
 			/>
 		);
@@ -54,7 +54,10 @@ describe('<ExploreSidebar />', () => {
 		renderWithTheme(
 			<ExploreSidebar
 				items={items}
-				initialValues={{ windows: true, linux: true, sort_by: 'low-to-high' }}
+				initialValues={{
+					platforms: ['windows', 'linux'],
+					sort_by: 'low-to-high',
+				}}
 				onFilter={onFilter}
 			/>
 		);
@@ -64,8 +67,7 @@ describe('<ExploreSidebar />', () => {
 		fireEvent.click(button);
 
 		expect(onFilter).toHaveBeenCalledWith({
-			windows: true,
-			linux: true,
+			platforms: ['windows', 'linux'],
 			sort_by: 'low-to-high',
 		});
 	});
@@ -80,12 +82,15 @@ describe('<ExploreSidebar />', () => {
 
 		fireEvent.click(screen.getByLabelText(/windows/i));
 		fireEvent.click(screen.getByLabelText(/low to high/i));
+		fireEvent.click(screen.getByLabelText(/free/i));
 		fireEvent.click(button);
 
 		expect(onFilter).toHaveBeenCalledWith({
-			windows: true,
+			platforms: ['windows'],
 			sort_by: 'low-to-high',
 		});
+
+		expect(onFilter).toHaveBeenCalledTimes(4);
 	});
 
 	it('should altern between radio buttons', () => {

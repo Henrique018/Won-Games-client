@@ -14,6 +14,7 @@ export default {
 	},
 	args: {
 		items,
+		onFilter: () => console.log('filter'),
 	},
 	component: ExploreSidebar,
 } as Meta;
@@ -29,9 +30,8 @@ export const WithInitialvalues: Story<ExploreSidebarProps> = (args) => (
 		<ExploreSidebar
 			{...args}
 			initialValues={{
-				windows: true,
+				platforms: ['windows', 'linux'],
 				sort_by: 'high-to-low',
-				action: true,
 			}}
 		/>
 	</div>

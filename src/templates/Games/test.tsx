@@ -8,25 +8,30 @@ import { gamesMock, seeMoreMock } from './mocks';
 
 import Games from '.';
 import apolloCache from 'utils/apolloCache';
+import userEvent from '@testing-library/user-event';
 
-jest.mock('components/ExploreSidebar', () => {
-	return {
-		__esModule: true,
-		default: function Mock() {
-			return <div data-testid="ExploreSidebar mock"></div>;
-		},
-	};
-});
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+const push = jest.fn();
+
+useRouter.mockImplementation(() => ({
+	push,
+	query: '',
+	asPath: '',
+	route: '/',
+}));
 
 describe('<Games />', () => {
-	it('should render a loading', () => {
+	it('should render an Empty component', async () => {
 		renderWithTheme(
 			<MockedProvider mocks={[]} addTypename={false}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>
 		);
 
-		expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+		expect(
+			await screen.findByText(/No games found with specified filters/i)
+		).toBeInTheDocument();
 	});
 
 	it('should render all elements of Games page correctly', async () => {
@@ -36,9 +41,7 @@ describe('<Games />', () => {
 			</MockedProvider>
 		);
 
-		expect(
-			await screen.findByTestId('ExploreSidebar mock')
-		).toBeInTheDocument();
+		expect(await screen.findByText(/price/i)).toBeInTheDocument();
 
 		expect(await screen.findByText(/System Shock™ 2/i)).toBeInTheDocument();
 
@@ -61,5 +64,21 @@ describe('<Games />', () => {
 		fireEvent.click(seeMoreBtn);
 
 		expect(await screen.findByText(/see more game/i)).toBeInTheDocument();
+	});
+
+	it('should change the url when selecting a field from ExploreSidebar', async () => {
+		renderWithTheme(
+			<MockedProvider mocks={[gamesMock, seeMoreMock]} cache={apolloCache}>
+				<Games filterItems={filterItemsMock} />
+			</MockedProvider>
+		);
+
+		userEvent.click(await screen.findByRole('checkbox', { name: /windows/i }));
+		userEvent.click(await screen.findByRole('radio', { name: /high to low/i }));
+
+		expect(push).toHaveBeenCalledWith({
+			pathname: '/games',
+			query: { platforms: ['windows'], sort_by: 'high-to-low' },
+		});
 	});
 });

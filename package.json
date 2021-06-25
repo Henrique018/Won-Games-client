@@ -13,10 +13,10 @@
     "generate": "yarn plop --plopfile ./generators/plopfile.js",
     "storybook": "start-storybook -p 6006 -s ./public --no-dll",
     "build-storybook": "build-storybook --no-dll -s ./public",
-		"schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
-		"schema:convert": "node src/utils/convertToNonNull.js",
-		"codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
-		"types:generate": "yarn schema:download && yarn schema:convert && yarn codegen"
+    "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
+    "schema:convert": "node src/utils/convertToNonNull.js",
+    "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
+    "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen"
   },
   "husky": {
     "hooks": {
@@ -33,7 +33,9 @@
     "@apollo/client": "^3.3.11",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
+    "@types/lodash.xor": "^4.5.6",
     "graphql": "^15.5.0",
+    "lodash.xor": "^4.5.0",
     "next": "10.0.1",
     "next-pwa": "^3.1.5",
     "polished": "^4.0.5",
