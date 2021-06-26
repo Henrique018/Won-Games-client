@@ -33,6 +33,11 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 		},
 	});
 
+	if (!data) return <p>Loading...</p>;
+	const { games, gamesConnection } = data;
+
+	const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
+
 	const handleOnFilter = (items: ParsedUrlQueryInput) => {
 		push({
 			pathname: '/games',
@@ -42,7 +47,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 	};
 
 	const handleSeeMore = () => {
-		fetchMore({ variables: { limit: 15, start: data?.games?.length } });
+		fetchMore({ variables: { limit: 15, start: games?.length } });
 	};
 
 	return (
@@ -60,10 +65,10 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 				</S.SidebarWrapper>
 
 				<section>
-					{data?.games?.length ? (
+					{games?.length ? (
 						<>
 							<Grid>
-								{data?.games?.map((game, index) => (
+								{games?.map((game, index) => (
 									<GameCard
 										key={`game - ${index}`}
 										title={game.name}
@@ -74,19 +79,21 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 									/>
 								))}
 							</Grid>
-							<S.SeeMore>
-								{loading ? (
-									<S.SeeMoreLoading
-										src="/img/dots.svg"
-										alt="Loading more games..."
-									/>
-								) : (
-									<S.SeeMoreButton role="button" onClick={handleSeeMore}>
-										<p>See More</p>
-										<ArrowDown size={35} />
-									</S.SeeMoreButton>
-								)}
-							</S.SeeMore>
+							{hasMoreGames && (
+								<S.SeeMore>
+									{loading ? (
+										<S.SeeMoreLoading
+											src="/img/dots.svg"
+											alt="Loading more games..."
+										/>
+									) : (
+										<S.SeeMoreButton role="button" onClick={handleSeeMore}>
+											<p>See More</p>
+											<ArrowDown size={35} />
+										</S.SeeMoreButton>
+									)}
+								</S.SeeMore>
+							)}
 						</>
 					) : (
 						<Empty

@@ -4,7 +4,7 @@ import { renderWithTheme } from 'utils/test/helper';
 import { MockedProvider } from '@apollo/client/testing';
 
 import filterItemsMock from 'components/ExploreSidebar/mock';
-import { gamesMock, seeMoreMock } from './mocks';
+import { gamesMock, noGamesMock, seeMoreMock } from './mocks';
 
 import Games from '.';
 import apolloCache from 'utils/apolloCache';
@@ -24,7 +24,7 @@ useRouter.mockImplementation(() => ({
 describe('<Games />', () => {
 	it('should render an Empty component', async () => {
 		renderWithTheme(
-			<MockedProvider mocks={[]} addTypename={false}>
+			<MockedProvider mocks={[noGamesMock]} addTypename={false}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>
 		);
