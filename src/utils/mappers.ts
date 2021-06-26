@@ -45,7 +45,9 @@ export const highlightMapper = (
 	);
 };
 
-export const gamesMapper = (gamesArray: QueryGames_games[] | null) => {
+export const gamesMapper = (
+	gamesArray: QueryGames_games[] | null | undefined
+) => {
 	return (
 		gamesArray &&
 		gamesArray.map((game) => ({

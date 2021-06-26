@@ -25,6 +25,7 @@ export const gamesMock = {
 		data: {
 			games: [
 				{
+					id: '1',
 					name: 'System Shock™ 2',
 					slug: 'system-shock-2',
 					cover: {
@@ -53,6 +54,7 @@ export const seeMoreMock = {
 		data: {
 			games: [
 				{
+					id: '2',
 					name: 'see more game',
 					slug: 'see-more-game',
 					cover: {
