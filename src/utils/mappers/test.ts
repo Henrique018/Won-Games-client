@@ -43,6 +43,11 @@ describe('bannerMapper', () => {
 });
 
 describe('gamesMapper', () => {
+	it("should return an empty array if there're no games", () => {
+		const games = gamesMapper([]);
+		expect(games).toStrictEqual([]);
+	});
+
 	it('should return the correct structure for games', () => {
 		const gamesMock = {
 			id: '10',
@@ -60,9 +65,9 @@ describe('gamesMapper', () => {
 		} as QueryGames_games;
 
 		const games = gamesMapper([gamesMock]);
-
 		expect(games).toStrictEqual([
 			{
+				id: '10',
 				title: 'Cyberpunk 2077',
 				slug: 'Cyberpunk-2077',
 				img: 'http://localhost:1337/uploads/cyberpunk_2077_44ff1e39f7.jpg',
@@ -73,8 +78,8 @@ describe('gamesMapper', () => {
 	});
 });
 
-describe('gamesMapper', () => {
-	it('should return the correct structure for games', () => {
+describe('highlightMapper', () => {
+	it('should return the correct structure for highlight component', () => {
 		const highlightMock = {
 			title: 'Cyberpunk 2077',
 			subtitle: 'Join Night City in this open-world, action-adventure story',
@@ -89,9 +94,9 @@ describe('gamesMapper', () => {
 			buttonLink: 'http://localhost:3000/game/cyberpunk-2077',
 		} as QueryHome_sections_popularGames_highlight;
 
-		const games = highlightMapper(highlightMock);
+		const highlight = highlightMapper(highlightMock);
 
-		expect(games).toStrictEqual({
+		expect(highlight).toStrictEqual({
 			title: 'Cyberpunk 2077',
 			subtitle: 'Join Night City in this open-world, action-adventure story',
 			floatImage: 'http://localhost:1337/uploads/cyberpunk_2077_float.jpg',

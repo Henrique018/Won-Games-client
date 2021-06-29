@@ -51,6 +51,7 @@ export const gamesMapper = (
 	return (
 		gamesArray &&
 		gamesArray.map((game) => ({
+			id: game.id,
 			title: game.name,
 			img: `http://localhost:1337${game.cover?.url}`,
 			price: game.price,
