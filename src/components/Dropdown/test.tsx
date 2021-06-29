@@ -5,15 +5,19 @@ import { renderWithTheme } from 'utils/test/helper';
 import Dropdown from '.';
 
 describe('<Dropdown />', () => {
-	it('should render a title', () => {
-		renderWithTheme(<Dropdown title="Click here">content</Dropdown>);
+	beforeEach(() => {
+		renderWithTheme(
+			<Dropdown title="Click here">
+				<span>content</span>
+			</Dropdown>
+		);
+	});
 
+	it('should render a title', () => {
 		expect(screen.getByText(/click here/i)).toBeInTheDocument();
 	});
 
 	it('should handle open/close dropdown ', () => {
-		renderWithTheme(<Dropdown title="Click here">content</Dropdown>);
-
 		const content = screen.queryByText(/content/i);
 		expect(content).not.toBeVisible();
 
@@ -22,5 +26,20 @@ describe('<Dropdown />', () => {
 
 		userEvent.click(screen.getByText(/click here/i));
 		expect(content).not.toBeVisible();
+	});
+
+	it('should close dropdown when overlay is clicked', () => {
+		const content = screen.getByText(/content/i).parentElement!;
+		const overlay = content.nextElementSibling!;
+		expect(content).not.toBeVisible();
+		expect(overlay).not.toBeVisible();
+
+		userEvent.click(screen.getByText(/click here/i));
+		expect(content).toBeVisible();
+		expect(overlay).toBeVisible();
+
+		userEvent.click(overlay);
+		expect(content).not.toBeVisible();
+		expect(overlay).not.toBeVisible();
 	});
 });
