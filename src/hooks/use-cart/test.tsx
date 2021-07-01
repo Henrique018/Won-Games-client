@@ -25,5 +25,7 @@ describe('useCart()', () => {
 		await waitForNextUpdate();
 
 		expect(result.current.items).toStrictEqual(cartItems);
+		expect(result.current.quantity).toStrictEqual(2);
+		expect(result.current.total).toStrictEqual('$39.98');
 	});
 });
