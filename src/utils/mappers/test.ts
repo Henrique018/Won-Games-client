@@ -3,7 +3,7 @@ import {
 	QueryHome_banners,
 	QueryHome_sections_popularGames_highlight,
 } from 'graphql/generated/QueryHome';
-import { bannerMapper, gamesMapper, highlightMapper } from '.';
+import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.';
 
 describe('bannerMapper', () => {
 	it('should return the correct structure for the banner component', () => {
@@ -106,5 +106,39 @@ describe('highlightMapper', () => {
 			buttonLabel: 'buy now',
 			buttonLink: 'http://localhost:3000/game/cyberpunk-2077',
 		});
+	});
+});
+
+describe('cartMapper', () => {
+	it('should return an empty array', () => {
+		expect(cartMapper(undefined)).toStrictEqual([]);
+	});
+
+	it('should return the correct structure for cart items', () => {
+		const gamesMock = {
+			id: '10',
+			name: 'Cyberpunk 2077',
+			price: 200,
+			slug: 'Cyberpunk-2077',
+			cover: {
+				url: '/uploads/cyberpunk_2077_44ff1e39f7.jpg',
+			},
+			developers: [
+				{
+					name: 'CD PROJEKT RED',
+				},
+			],
+		} as QueryGames_games;
+
+		const result = cartMapper([gamesMock]);
+
+		expect(result).toStrictEqual([
+			{
+				id: '10',
+				img: `http://localhost:1337/uploads/cyberpunk_2077_44ff1e39f7.jpg`,
+				price: '$200.00',
+				title: 'Cyberpunk 2077',
+			},
+		]);
 	});
 });
