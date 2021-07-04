@@ -1,5 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen, fireEvent } from 'utils/test-util';
 
 import { MockedProvider } from '@apollo/client/testing';
 
@@ -30,7 +29,7 @@ jest.mock('next/link', () => ({
 
 describe('<Games />', () => {
 	it('should render an Empty component', async () => {
-		renderWithTheme(
+		render(
 			<MockedProvider mocks={[noGamesMock]} addTypename={false}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>
@@ -42,7 +41,7 @@ describe('<Games />', () => {
 	});
 
 	it('should render all elements of Games page correctly', async () => {
-		renderWithTheme(
+		render(
 			<MockedProvider mocks={[gamesMock]} addTypename={false}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>
@@ -58,7 +57,7 @@ describe('<Games />', () => {
 	});
 
 	it('should render more games when see more is clicked', async () => {
-		renderWithTheme(
+		render(
 			<MockedProvider mocks={[gamesMock, seeMoreMock]} cache={apolloCache}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>
@@ -74,7 +73,7 @@ describe('<Games />', () => {
 	});
 
 	it('should change the url when selecting a field from ExploreSidebar', async () => {
-		renderWithTheme(
+		render(
 			<MockedProvider mocks={[gamesMock, seeMoreMock]} cache={apolloCache}>
 				<Games filterItems={filterItemsMock} />
 			</MockedProvider>

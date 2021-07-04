@@ -1,19 +1,17 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from 'utils/test-util';
 import userEvent from '@testing-library/user-event';
-
-import { renderWithTheme } from 'utils/test/helper';
 
 import UserDropdown from '.';
 
 describe('<UserDropdown />', () => {
 	it('should render a username', () => {
-		renderWithTheme(<UserDropdown username="Henrique" />);
+		render(<UserDropdown username="Henrique" />);
 
 		expect(screen.getByText(/henrique/i)).toBeInTheDocument();
 	});
 
 	it('should render the dropdown with all links', () => {
-		renderWithTheme(<UserDropdown username="Henrique" />);
+		render(<UserDropdown username="Henrique" />);
 
 		userEvent.click(screen.getByText(/henrique/i));
 		expect(screen.getByText(/my account/i)).toBeVisible();

@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import GameInfo from '.';
 import mockGame from './mock';
@@ -8,7 +7,7 @@ const props = mockGame;
 
 describe('<GameInfo />', () => {
 	it('should render a heading, description and price', () => {
-		renderWithTheme(<GameInfo {...props} />);
+		render(<GameInfo {...props} />);
 
 		expect(
 			screen.getByRole('heading', { name: /Borderlands 3/i })
@@ -24,7 +23,7 @@ describe('<GameInfo />', () => {
 	});
 
 	it('should render with two buttons', () => {
-		renderWithTheme(<GameInfo {...props} />);
+		render(<GameInfo {...props} />);
 
 		expect(
 			screen.getByRole('button', { name: /wishlist/i })

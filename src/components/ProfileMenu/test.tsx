@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import ProfileMenu from '.';
 
 describe('<ProfileMenu />', () => {
 	it('should render the menu', () => {
-		const { container } = renderWithTheme(<ProfileMenu />);
+		const { container } = render(<ProfileMenu />);
 		expect(
 			screen.getByRole('link', { name: /my profile/i })
 		).toBeInTheDocument();
@@ -20,7 +19,7 @@ describe('<ProfileMenu />', () => {
 	});
 
 	it('should highlight the active link defined', () => {
-		renderWithTheme(<ProfileMenu activeLink="/profile/me" />);
+		render(<ProfileMenu activeLink="/profile/me" />);
 
 		expect(screen.getByRole('link', { name: /my profile/i })).toHaveStyle({
 			backgroundColor: '#F231A5',

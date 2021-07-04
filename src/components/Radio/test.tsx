@@ -1,14 +1,11 @@
-import { screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from 'utils/test-util';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/test/helper';
 
 import Radio from '.';
 
 describe('<Radio />', () => {
 	it('should render with a label', () => {
-		renderWithTheme(
-			<Radio name="category" label="radio label" labelFor="radio" />
-		);
+		render(<Radio name="category" label="radio label" labelFor="radio" />);
 
 		expect(screen.getByRole('radio')).toBeInTheDocument();
 		expect(screen.getByLabelText(/radio label/i)).toBeInTheDocument();
@@ -16,9 +13,7 @@ describe('<Radio />', () => {
 	});
 
 	it('should render a white label as default', () => {
-		renderWithTheme(
-			<Radio name="category" label="radio label" labelColor="white" />
-		);
+		render(<Radio name="category" label="radio label" labelColor="white" />);
 
 		expect(screen.getByText(/radio label/i)).toHaveStyle({
 			color: '#FAFAFA',
@@ -28,7 +23,7 @@ describe('<Radio />', () => {
 	it('should dispatch onCheck when label status changes', async () => {
 		const onCheck = jest.fn();
 
-		renderWithTheme(
+		render(
 			<Radio
 				name="category"
 				label="radio label"
@@ -43,7 +38,7 @@ describe('<Radio />', () => {
 	});
 
 	it('should have keyboard accessibility', () => {
-		renderWithTheme(<Radio name="category" label="radio label" />);
+		render(<Radio name="category" label="radio label" />);
 
 		expect(window.document.body).toHaveFocus();
 

@@ -1,12 +1,11 @@
-import { screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from 'utils/test-util';
 import userEvent from '@testing-library/user-event';
 
-import { renderWithTheme } from 'utils/test/helper';
 import Checkbox from '.';
 
 describe('<Checkbox />', () => {
 	it('should render with a label', () => {
-		renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />);
+		render(<Checkbox label="checkbox label" labelFor="check" />);
 
 		// selecting the input by its role
 		expect(screen.getByRole('checkbox')).toBeInTheDocument();
@@ -19,7 +18,7 @@ describe('<Checkbox />', () => {
 	});
 
 	it('should render without a label', () => {
-		renderWithTheme(<Checkbox />);
+		render(<Checkbox />);
 
 		expect(screen.queryByLabelText('Checkbox')).not.toBeInTheDocument();
 		expect(screen.getByRole('checkbox')).toBeInTheDocument();
@@ -27,7 +26,7 @@ describe('<Checkbox />', () => {
 	});
 
 	it('should render a black label', () => {
-		renderWithTheme(
+		render(
 			<Checkbox label="checkbox label" labelFor="check" labelColor="black" />
 		);
 
@@ -39,7 +38,7 @@ describe('<Checkbox />', () => {
 	it('should dispatch a onCheck when status chenges', async () => {
 		const onCheck = jest.fn();
 
-		renderWithTheme(
+		render(
 			<Checkbox label="checkbox label" labelFor="check" onCheck={onCheck} />
 		);
 
@@ -55,7 +54,7 @@ describe('<Checkbox />', () => {
 	it('should have a false status when the check is not marked', async () => {
 		const onCheck = jest.fn();
 
-		renderWithTheme(
+		render(
 			<Checkbox
 				label="checkbox label"
 				labelFor="check"
@@ -72,7 +71,7 @@ describe('<Checkbox />', () => {
 	});
 
 	it('should have keyboard accessibility', () => {
-		renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />);
+		render(<Checkbox label="checkbox label" labelFor="check" />);
 
 		expect(window.document.body).toHaveFocus();
 

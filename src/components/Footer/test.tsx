@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import Footer from '.';
 
 describe('<Footer />', () => {
 	it('should render the footer with contact, follow us, links and location', () => {
-		const { container } = renderWithTheme(<Footer />);
+		const { container } = render(<Footer />);
 
 		expect(
 			screen.getByRole('heading', { name: /contact/i })

@@ -1,7 +1,6 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from 'utils/test-util';
 
 import Wishlist, { WishlistProps } from '.';
-import { renderWithTheme } from 'utils/test/helper';
 
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
@@ -24,7 +23,7 @@ jest.mock('components/Showcase', () => {
 
 describe('<Wishlist />', () => {
 	it('should render the wishlist elements', () => {
-		renderWithTheme(<Wishlist {...props} />);
+		render(<Wishlist {...props} />);
 
 		expect(
 			screen.getAllByRole('heading', { name: /population zero/i })
@@ -38,7 +37,7 @@ describe('<Wishlist />', () => {
 	});
 
 	it('should render a message when theres no fav games', () => {
-		renderWithTheme(<Wishlist {...props} games={undefined} />);
+		render(<Wishlist {...props} games={undefined} />);
 
 		expect(
 			screen.queryByRole('heading', { name: /population zero/i })

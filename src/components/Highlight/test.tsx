@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 import highlightMock from 'components/Highlight/mock';
 
 import Highlight from '.';
@@ -7,7 +6,7 @@ import * as S from './styles';
 
 describe('<Highlight />', () => {
 	it('should render the highlight', () => {
-		renderWithTheme(<Highlight {...highlightMock} />);
+		render(<Highlight {...highlightMock} />);
 
 		expect(
 			screen.getByRole('heading', { name: highlightMock.title })
@@ -22,7 +21,7 @@ describe('<Highlight />', () => {
 	});
 
 	it('should render a background image', () => {
-		const { container } = renderWithTheme(<Highlight {...highlightMock} />);
+		const { container } = render(<Highlight {...highlightMock} />);
 
 		expect(container.firstChild).toHaveStyle({
 			backgroundImage: `url(${highlightMock.backgroundImage})`,
@@ -30,9 +29,7 @@ describe('<Highlight />', () => {
 	});
 
 	it('should render a float image', () => {
-		renderWithTheme(
-			<Highlight floatImage="/img/float-image.png" {...highlightMock} />
-		);
+		render(<Highlight floatImage="/img/float-image.png" {...highlightMock} />);
 
 		expect(
 			screen.getByRole('img', { name: highlightMock.title })
@@ -40,7 +37,7 @@ describe('<Highlight />', () => {
 	});
 
 	it('should render a highlight with a right alignment by default', () => {
-		const { container } = renderWithTheme(
+		const { container } = render(
 			<Highlight floatImage="/img/float-image.png" {...highlightMock} />
 		);
 
@@ -54,7 +51,7 @@ describe('<Highlight />', () => {
 	});
 
 	it('should render a left aligned highlight', () => {
-		const { container } = renderWithTheme(
+		const { container } = render(
 			<Highlight
 				floatImage="/img/float-image.png"
 				alignment="left"

@@ -1,6 +1,5 @@
-import { screen } from '@testing-library/react';
 import React from 'react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import Profile from '.';
 
@@ -28,7 +27,7 @@ jest.mock('components/ProfileMenu', () => {
 
 describe('<Profile />', () => {
 	it('should render the profile elements correctly', () => {
-		renderWithTheme(
+		render(
 			<Profile>
 				<h1>a simple component</h1>
 			</Profile>

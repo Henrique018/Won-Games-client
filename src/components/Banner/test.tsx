@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import Banner, { BannerProps } from '.';
 
@@ -13,7 +12,7 @@ const args = {
 // todo banner tests..
 describe('<Banner />', () => {
 	it('should render the banner correctly', () => {
-		const { container } = renderWithTheme(<Banner {...args} />);
+		const { container } = render(<Banner {...args} />);
 
 		expect(screen.getByRole('img')).toHaveAttribute('src');
 
@@ -27,7 +26,7 @@ describe('<Banner />', () => {
 	});
 
 	it('should render the banner with a ribbon', () => {
-		renderWithTheme(
+		render(
 			<Banner
 				{...args}
 				ribbonText="20% OFF"

@@ -1,9 +1,9 @@
-import { renderWithTheme } from 'utils/test/helper';
+import { render } from 'utils/test-util';
 import { FormLink, FormWrapper } from '.';
 
 describe('<Form />', () => {
 	it('should have the form styles', () => {
-		const { container } = renderWithTheme(
+		const { container } = render(
 			<FormWrapper>
 				<FormLink>
 					<a href="#">my test link</a>

@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from 'utils/test-util';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/test/helper';
 
 import Dropdown from '.';
 
 describe('<Dropdown />', () => {
 	beforeEach(() => {
-		renderWithTheme(
+		render(
 			<Dropdown title="Click here">
 				<span>content</span>
 			</Dropdown>

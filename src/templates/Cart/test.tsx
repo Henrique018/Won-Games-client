@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import CartPage from '.';
 
@@ -55,7 +54,7 @@ jest.mock('components/Empty', () => {
 
 describe('<CartPage />', () => {
 	it('should render all cart elements', () => {
-		renderWithTheme(<CartPage {...props} />);
+		render(<CartPage {...props} />);
 
 		expect(
 			screen.getByRole('heading', { name: /My Cart/i })
@@ -68,7 +67,7 @@ describe('<CartPage />', () => {
 	});
 
 	it('should render the empty component if there are no items', () => {
-		const { container } = renderWithTheme(<CartPage {...props} items={[]} />);
+		const { container } = render(<CartPage {...props} items={[]} />);
 
 		expect(screen.getByTestId(/empty mock/i)).toBeInTheDocument();
 

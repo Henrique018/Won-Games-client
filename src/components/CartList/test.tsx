@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import CartList from '.';
 
@@ -7,7 +6,7 @@ import cartMock from './mock';
 
 describe('<CartList />', () => {
 	it('should render correctly', () => {
-		const { container } = renderWithTheme(<CartList {...cartMock} />);
+		const { container } = render(<CartList {...cartMock} />);
 
 		expect(
 			screen.getByRole('heading', { name: 'Borderlands 3' })
@@ -22,13 +21,13 @@ describe('<CartList />', () => {
 	});
 
 	it('should render a button', () => {
-		renderWithTheme(<CartList {...cartMock} hasButton />);
+		render(<CartList {...cartMock} hasButton />);
 
 		expect(screen.getByRole('link', { name: /buy it now!/i }));
 	});
 
 	it('should render the empty component if there are no games', () => {
-		renderWithTheme(<CartList items={[]} hasButton />);
+		render(<CartList items={[]} hasButton />);
 
 		expect(screen.getByText(/Your cart is empty/i)).toBeInTheDocument();
 		expect(screen.queryByText(/total/i)).not.toBeInTheDocument();

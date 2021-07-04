@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from 'utils/test-util';
 import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart';
 
-import { renderWithTheme } from 'utils/test/helper';
 import Button from '.';
 
 describe('<Button />', () => {
 	it('should render a medium size button by default', () => {
-		const { container } = renderWithTheme(<Button>Download Now</Button>);
+		const { container } = render(<Button>Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
 			height: '4rem',
@@ -18,7 +17,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render a small size button', () => {
-		renderWithTheme(<Button size="small">Download Now</Button>);
+		render(<Button size="small">Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
 			height: '3rem',
@@ -27,7 +26,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render a large size button', () => {
-		renderWithTheme(<Button size="large">Download Now</Button>);
+		render(<Button size="large">Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
 			height: '5rem',
@@ -36,7 +35,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render a disabled version', () => {
-		const { debug } = renderWithTheme(<Button disabled>Download Now</Button>);
+		const { debug } = render(<Button disabled>Download Now</Button>);
 
 		debug(screen.getByRole('button', { name: /Download Now/i }));
 		expect(
@@ -47,7 +46,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render a full width button', () => {
-		renderWithTheme(<Button fullWidth>Download Now</Button>);
+		render(<Button fullWidth>Download Now</Button>);
 
 		expect(screen.getByRole('button')).toHaveStyle({
 			width: '100%',
@@ -55,7 +54,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render an icon version', () => {
-		renderWithTheme(
+		render(
 			<Button icon={<AddShoppingCart data-testid="icon" />}>
 				Download Now
 			</Button>
@@ -66,7 +65,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render a minimal version', () => {
-		renderWithTheme(
+		render(
 			<Button icon={<AddShoppingCart />} minimal>
 				Add to wishlist
 			</Button>
@@ -80,7 +79,7 @@ describe('<Button />', () => {
 	});
 
 	it('should render the button as a link', () => {
-		renderWithTheme(
+		render(
 			<Button as="a" href="/link">
 				Buy now
 			</Button>

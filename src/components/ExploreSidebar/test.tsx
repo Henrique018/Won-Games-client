@@ -1,12 +1,11 @@
-import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen, fireEvent } from 'utils/test-util';
 
 import items from './mock';
 import ExploreSidebar from '.';
 
 describe('<ExploreSidebar />', () => {
 	it('should render the headings', () => {
-		renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />);
+		render(<ExploreSidebar items={items} onFilter={jest.fn} />);
 
 		expect(screen.getByRole('heading', { name: /price/i })).toBeInTheDocument();
 		expect(
@@ -19,7 +18,7 @@ describe('<ExploreSidebar />', () => {
 	});
 
 	it('should render all inputs', () => {
-		renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />);
+		render(<ExploreSidebar items={items} onFilter={jest.fn} />);
 
 		expect(
 			screen.getByRole('checkbox', { name: /under \$50/i })
@@ -31,13 +30,13 @@ describe('<ExploreSidebar />', () => {
 	});
 
 	it('should render a filter button', () => {
-		renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />);
+		render(<ExploreSidebar items={items} onFilter={jest.fn} />);
 
 		expect(screen.getByRole('button', { name: /filter/i })).toBeInTheDocument();
 	});
 
 	it('should render checked inputs when initial values are passed', () => {
-		renderWithTheme(
+		render(
 			<ExploreSidebar
 				items={items}
 				initialValues={{ platforms: ['windows'], sort_by: 'low-to-high' }}
@@ -51,7 +50,7 @@ describe('<ExploreSidebar />', () => {
 
 	it('should filter initial values', () => {
 		const onFilter = jest.fn();
-		renderWithTheme(
+		render(
 			<ExploreSidebar
 				items={items}
 				initialValues={{
@@ -74,7 +73,7 @@ describe('<ExploreSidebar />', () => {
 
 	it('should filter checked values', () => {
 		const onFilter = jest.fn();
-		renderWithTheme(
+		render(
 			<ExploreSidebar items={items} initialValues={{}} onFilter={onFilter} />
 		);
 
@@ -95,7 +94,7 @@ describe('<ExploreSidebar />', () => {
 
 	it('should altern between radio buttons', () => {
 		const onFilter = jest.fn();
-		renderWithTheme(
+		render(
 			<ExploreSidebar items={items} initialValues={{}} onFilter={onFilter} />
 		);
 

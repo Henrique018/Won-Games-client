@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import Auth from '.';
 
 describe('<Auth />', () => {
 	it('should have two logos', () => {
-		renderWithTheme(<Auth title="sign in">Children</Auth>);
+		render(<Auth title="sign in">Children</Auth>);
 
 		expect(screen.queryAllByRole('img', { name: /won games/i })).toHaveLength(
 			2
@@ -13,7 +12,7 @@ describe('<Auth />', () => {
 	});
 
 	it('should render all banner & content headings', () => {
-		renderWithTheme(<Auth title="sign in">Children</Auth>);
+		render(<Auth title="sign in">Children</Auth>);
 		expect(
 			screen.getByRole('heading', {
 				name: /All your favorite games in one place/i,
@@ -32,7 +31,7 @@ describe('<Auth />', () => {
 	});
 
 	it('should render a children', () => {
-		renderWithTheme(
+		render(
 			<Auth title="sign in">
 				<input type="text" />
 			</Auth>

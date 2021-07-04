@@ -36,7 +36,9 @@ export const cartContextDefaultValues = {
 	clearCart: () => undefined,
 };
 
-const CartContext = createContext<cartContextTypes>(cartContextDefaultValues);
+export const CartContext = createContext<cartContextTypes>(
+	cartContextDefaultValues
+);
 
 export type CartProviderProps = {
 	children: React.ReactNode;

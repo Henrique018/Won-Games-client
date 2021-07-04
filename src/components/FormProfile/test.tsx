@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import FormProfile from '.';
 
 describe('<FormProfile />', () => {
 	it('should render the form profile elements', () => {
-		renderWithTheme(<FormProfile />);
+		render(<FormProfile />);
 
 		expect(
 			screen.getByRole('heading', { name: /My Profile/i })

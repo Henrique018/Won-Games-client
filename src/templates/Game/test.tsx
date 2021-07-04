@@ -1,6 +1,5 @@
 import 'match-media-mock';
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/test/helper';
+import { render, screen } from 'utils/test-util';
 
 import galleryMock from 'components/Gallery/mock';
 import TextContentMock from 'components/TextContent/mock';
@@ -71,7 +70,7 @@ jest.mock('components/Showcase', () => {
 
 describe('<Game />', () => {
 	it('should render all game elements', () => {
-		renderWithTheme(<Game {...props} />);
+		render(<Game {...props} />);
 
 		expect(screen.getByTestId(/gameinfo mock/i)).toBeInTheDocument();
 		expect(screen.getByTestId(/gallery mock/i)).toBeInTheDocument();
@@ -81,13 +80,13 @@ describe('<Game />', () => {
 	});
 
 	it("shouldn't render gallery if there is no images", () => {
-		renderWithTheme(<Game {...props} gallery={undefined} />);
+		render(<Game {...props} gallery={undefined} />);
 
 		expect(screen.queryByTestId(/gallery mock/i)).not.toBeInTheDocument();
 	});
 
 	it("shouldn't render gallery on mobile", () => {
-		renderWithTheme(<Game {...props} />);
+		render(<Game {...props} />);
 
 		expect(screen.getByTestId(/gallery mock/i).parentElement).toHaveStyleRule(
 			'display',
@@ -99,7 +98,7 @@ describe('<Game />', () => {
 	});
 
 	it('should render the cover image', () => {
-		renderWithTheme(<Game {...props} />);
+		render(<Game {...props} />);
 
 		const cover = screen.getByRole('image', { name: /cover/i });
 
