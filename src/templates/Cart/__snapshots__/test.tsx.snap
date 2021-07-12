@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[
-	`<CartPage /> should render the empty component if there are no items 1`
-] = `
+exports[`<CartPage /> should render all cart elements 1`] = `
 .c5 {
   display: inline-block;
   vertical-align: middle;
@@ -31,7 +29,7 @@ exports[
   flex: 1 0 auto;
 }
 
-.c32 {
+.c34 {
   margin-top: 4.0rem;
   padding-bottom: 1.6rem;
   padding-top: 4.0rem;
@@ -232,7 +230,7 @@ exports[
   height: 3.3rem;
 }
 
-.c34 {
+.c36 {
   color: #030517;
   width: 11rem;
   height: 3.3rem;
@@ -393,14 +391,14 @@ exports[
   font-weight: 600;
 }
 
-.c37 {
+.c39 {
   color: #030517;
   position: relative;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
-.c37::after {
+.c39::after {
   position: absolute;
   left: 0;
   bottom: -1rem;
@@ -409,25 +407,25 @@ exports[
   border-bottom: 0.5rem solid #3CD3C1;
 }
 
-.c37::after {
+.c39::after {
   width: 2.5rem;
   bottom: -0.3rem;
 }
 
-.c33 .c29 {
+.c35 .c29 {
   text-transform: uppercase;
   margin-bottom: 1.6rem;
 }
 
-.c35 {
+.c37 {
   display: grid;
   grid-template-columns: minmax(auto,50%) 1fr;
   gap: 3.2rem;
   margin-top: 3.2rem;
 }
 
-.c36 a,
-.c36 span {
+.c38 a,
+.c38 span {
   display: block;
   color: #2E2F42;
   font-size: 1.4rem;
@@ -436,17 +434,17 @@ exports[
   text-decoration: none;
 }
 
-.c36 a {
+.c38 a {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-.c36 a:hover {
+.c38 a:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c38 {
+.c40 {
   color: #8F8F8F;
   font-size: 1.2rem;
   margin-top: 4.0rem;
@@ -454,15 +452,33 @@ exports[
   text-align: center;
 }
 
-.c31 {
+.c33 {
   background: rgba(181,181,181,0.3);
   border: 0;
   height: 0.1rem;
   margin: 5.6rem auto 3.2rem;
 }
 
+.c31 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin: 4.0rem 0;
+}
+
+.c32 {
+  color: #8F8F8F;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.c32 > span,
+.c32 svg {
+  color: #F231A5;
+}
+
 @media (min-width:768px) {
-  .c32 {
+  .c34 {
     padding-top: calc(5.6rem * 2);
     -webkit-clip-path: polygon(0 15%,100% 0%,100% 100%,0 100%);
     clip-path: polygon(0 15%,100% 0%,100% 100%,0 100%);
@@ -526,14 +542,20 @@ exports[
 }
 
 @media (min-width:768px) {
-  .c35 {
+  .c37 {
     grid-template-columns: repeat(4,1fr);
   }
 }
 
 @media (min-width:768px) {
-  .c31 {
+  .c33 {
     margin: calc(5.6rem * 2.5) auto 3.2rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c31 {
+    grid-template-columns: 2fr 1fr;
   }
 }
 
@@ -887,10 +909,45 @@ exports[
       class="c1"
     >
       <div
-        data-testid="Empty mock"
-      />
-      <hr
         class="c31"
+      >
+        <div>
+          <div
+            data-testid="CartList mock"
+          />
+        </div>
+        <div
+          data-testid="PaymentOptions mock"
+        />
+      </div>
+      <p
+        class="c32"
+      >
+        <svg
+          aria-hidden="true"
+          class="c5"
+          fill="currentColor"
+          focusable="false"
+          height="16"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+          />
+          <path
+            d="M11 11h2v6h-2zm0-4h2v2h-2z"
+          />
+        </svg>
+         Your purchase is protected by a secure connection from the WON platform. By purchasing from our store you agree and agree to our 
+        <span>
+          terms of use.
+        </span>
+         After making the purchase you are entitled to a refund within a maximum of 30 days, without any additional cost, as long as the download of the purchased game has not occurred after your purchase.
+      </p>
+      <hr
+        class="c33"
       />
     </div>
     <div
@@ -898,16 +955,16 @@ exports[
     />
   </div>
   <section
-    class="c32"
+    class="c34"
   >
     <div
       class="c1"
     >
       <footer
-        class="c33"
+        class="c35"
       >
         <div
-          class="c34"
+          class="c36"
           color="black"
         >
           <svg
@@ -993,13 +1050,13 @@ exports[
           </svg>
         </div>
         <div
-          class="c35"
+          class="c37"
         >
           <div
-            class="c36"
+            class="c38"
           >
             <h2
-              class="c29 c37"
+              class="c29 c39"
               color="black"
             >
               Contact Us
@@ -1011,10 +1068,10 @@ exports[
             </a>
           </div>
           <div
-            class="c36"
+            class="c38"
           >
             <h2
-              class="c29 c37"
+              class="c29 c39"
               color="black"
             >
               Follow us
@@ -1053,10 +1110,10 @@ exports[
             </nav>
           </div>
           <div
-            class="c36"
+            class="c38"
           >
             <h2
-              class="c29 c37"
+              class="c29 c39"
               color="black"
             >
               Links
@@ -1083,10 +1140,10 @@ exports[
           </div>
           <div
             aria-labelledby="footer-contact"
-            class="c36"
+            class="c38"
           >
             <h2
-              class="c29 c37"
+              class="c29 c39"
               color="black"
             >
               Location
@@ -1103,7 +1160,7 @@ exports[
           </div>
         </div>
         <div
-          class="c38"
+          class="c40"
         >
           Won Games © Todos os direitos reservados.
         </div>

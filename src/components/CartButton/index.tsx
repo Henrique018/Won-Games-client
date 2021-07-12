@@ -13,6 +13,7 @@ type CartButtonProps = {
 };
 const CartButton = ({ id, hasText, size }: CartButtonProps) => {
 	const { isInCart, addToCart, removeFromCart } = useCart();
+	const ButtonText = isInCart(id) ? 'Remove from cart' : 'Add to cart';
 	return (
 		<Button
 			icon={
@@ -25,7 +26,7 @@ const CartButton = ({ id, hasText, size }: CartButtonProps) => {
 			size={size}
 			onClick={() => (isInCart(id) ? removeFromCart(id) : addToCart(id))}
 		>
-			{hasText && isInCart(id) ? 'Remove from cart' : 'Add to cart'}
+			{hasText && ButtonText}
 		</Button>
 	);
 };

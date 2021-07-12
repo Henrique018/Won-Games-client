@@ -68,9 +68,10 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 					{games?.length ? (
 						<>
 							<Grid>
-								{games?.map((game, index) => (
+								{games?.map((game) => (
 									<GameCard
-										key={`game - ${index}`}
+										key={`game - ${game.id}`}
+										id={game.id}
 										title={game.name}
 										img={`http://localhost:1337${game.cover?.url}`}
 										price={game.price}
