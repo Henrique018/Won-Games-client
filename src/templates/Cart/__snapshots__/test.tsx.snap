@@ -729,7 +729,7 @@ exports[
                   >
                     <svg
                       aria-hidden="true"
-                      aria-label="Shopping cart"
+                      aria-label="Shopping Cart"
                       class="c5"
                       fill="currentColor"
                       focusable="false"
@@ -772,7 +772,7 @@ exports[
               >
                 <svg
                   aria-hidden="true"
-                  aria-label="Shopping cart"
+                  aria-label="Shopping Cart"
                   class="c5"
                   fill="currentColor"
                   focusable="false"

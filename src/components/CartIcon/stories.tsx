@@ -13,6 +13,10 @@ export default {
 } as Meta;
 
 export const Basic: Story = (args) => <CartIcon {...args} />;
-export const WithQuantity: Story = (args) => (
-	<CartIcon {...args} quantity={12} />
-);
+export const WithQuantity: Story = (args) => <CartIcon {...args} />;
+
+WithQuantity.args = {
+	cartContextValue: {
+		quantity: 3,
+	},
+};
