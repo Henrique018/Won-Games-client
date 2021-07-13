@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import NextNprogress from 'nextjs-progressbar';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/client';
 import { CartProvider } from 'hooks/use-cart';
@@ -22,6 +23,13 @@ function App({ Component, pageProps }: AppProps) {
 						<link rel="manifest" href="/manifest.json" />
 					</Head>
 					<GlobalStyles />
+					<NextNprogress
+						color="#F231A5"
+						startPosition={0.3}
+						stopDelayMs={200}
+						height={3}
+						showOnShallow={true}
+					/>
 					<Component {...pageProps} />
 				</CartProvider>
 			</ThemeProvider>
