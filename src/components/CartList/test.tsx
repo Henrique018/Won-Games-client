@@ -45,4 +45,14 @@ describe('<CartList />', () => {
 		expect(screen.getByText(/Your cart is empty/i)).toBeInTheDocument();
 		expect(screen.queryByText(/total/i)).not.toBeInTheDocument();
 	});
+
+	it('should render a loader', () => {
+		const cartProviderProps = {
+			...cartContextDefaultValues,
+			loading: true,
+		};
+		render(<CartList />, { cartProviderProps });
+
+		expect(screen.getByTitle(/Loading.../i)).toBeInTheDocument();
+	});
 });
