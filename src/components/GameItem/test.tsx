@@ -1,8 +1,11 @@
+import userEvent from '@testing-library/user-event';
+import { cartContextDefaultValues } from 'hooks/use-cart';
 import { render, screen } from 'utils/test-util';
 
 import GameItem, { PaymentInfoProps } from '.';
 
 const props = {
+	id: '1',
 	img: 'https://source.unsplash.com/user/willianjusten/151x70',
 	title: 'Red Dead Redemption',
 	price: 'R$ 215,00',
@@ -48,5 +51,21 @@ describe('<GameItem />', () => {
 
 		expect(screen.getByText(paymentInfo.number)).toBeInTheDocument();
 		expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument();
+	});
+
+	it('should remove an item when remove is clicked', () => {
+		const cartProviderProps = {
+			...cartContextDefaultValues,
+			isInCart: () => true,
+			removeFromCart: jest.fn(),
+		};
+
+		render(<GameItem {...props} />, { cartProviderProps });
+
+		const remove = screen.getByText(/remove/i);
+
+		userEvent.click(remove);
+
+		expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith('1');
 	});
 });

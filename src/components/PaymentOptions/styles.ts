@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components';
+import { tint } from 'polished';
 import * as ButtonStyles from 'components/Button/styles';
 
 export const Wrapper = styled.div`
 	${({ theme }) => css`
-		background-color: ${theme.colors.white};
-		padding: ${theme.spacings.xsmall};
-
 		${CardItem}, ${AddCard} {
 			height: 5rem;
 			display: flex;
@@ -21,6 +19,8 @@ export const Wrapper = styled.div`
 
 export const Body = styled.div`
 	${({ theme }) => css`
+		background-color: ${theme.colors.white};
+		padding: ${theme.spacings.small};
 		> div {
 			margin-top: ${theme.spacings.medium};
 		}
@@ -29,8 +29,9 @@ export const Body = styled.div`
 
 export const Footer = styled.div`
 	${({ theme }) => css`
+		background-color: ${tint(0.2, theme.colors.lightGray)};
 		display: flex;
-		margin-top: ${theme.spacings.large};
+		padding: ${theme.spacings.small};
 
 		${ButtonStyles.Wrapper} {
 			padding-left: ${theme.spacings.xxsmall};
