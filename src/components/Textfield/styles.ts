@@ -39,6 +39,11 @@ export const Input = styled.input`
 		border: 0;
 		outline: none;
 		width: 100%;
+
+		&:-webkit-auto-fill {
+			-webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+				${theme.colors.lightGray} inset;
+		}
 	`}
 `;
 
