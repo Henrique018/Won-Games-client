@@ -31,9 +31,9 @@ describe('<Textfield />', () => {
 		expect(screen.getByPlaceholderText('email')).toBeInTheDocument();
 	});
 
-	it('should call onInput when input changes', async () => {
-		const onInput = jest.fn();
-		render(<Textfield placeholder="email" onInput={onInput} />);
+	it('should call onInputChange when input changes', async () => {
+		const onInputChange = jest.fn();
+		render(<Textfield placeholder="email" onInputChange={onInputChange} />);
 
 		const input = screen.getByRole('textbox');
 		const text = 'A simple test';
@@ -41,9 +41,9 @@ describe('<Textfield />', () => {
 		userEvent.type(input, text);
 
 		await waitFor(() => {
-			expect(onInput).toHaveBeenCalledTimes(text.length);
+			expect(onInputChange).toHaveBeenCalledTimes(text.length);
 		});
-		expect(onInput).toHaveBeenCalledWith(text);
+		expect(onInputChange).toHaveBeenCalledWith(text);
 	});
 
 	it('should have keyboard accessibility', () => {

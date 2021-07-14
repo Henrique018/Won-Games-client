@@ -4,7 +4,7 @@ import * as S from './styles';
 export type TextFieldProps = {
 	label?: string;
 	initialValue?: string;
-	onInput?: (value: string) => void;
+	onInputChange?: (value: string) => void;
 	icon?: React.ReactNode;
 	iconPosition?: 'left' | 'right';
 	disabled?: boolean;
@@ -15,7 +15,7 @@ const Textfield = ({
 	label,
 	name,
 	initialValue = '',
-	onInput,
+	onInputChange,
 	icon,
 	iconPosition = 'left',
 	disabled = false,
@@ -28,7 +28,7 @@ const Textfield = ({
 		const newValue = e.currentTarget.value;
 		setValue(newValue);
 
-		onInput && onInput(newValue);
+		!!onInputChange && onInputChange(newValue);
 	};
 
 	return (
